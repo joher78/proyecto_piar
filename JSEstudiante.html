@@ -1,0 +1,220 @@
+<script>
+
+  // Obtener los elementos del DOM
+const nombreInput = document.getElementById("primer-nombre");
+const emailInput = document.getElementById("numero-documento");
+const passwordInput = document.getElementById("grado-aspirante");
+const boton = document.getElementById("btn-guardar");
+const botonGeneral = document.getElementById("btn-infoGeneral");
+const botonPadres = document.getElementById("btn-infoPadres");
+const botonLimpiar = document.getElementById("btn-limpiar");
+
+
+// Función para validar los campos de entrada
+function validarCampos() {
+  if (nombreInput.value && emailInput.value && passwordInput.value) {
+    boton.disabled = false; // Habilitar el botón
+  } else {
+    boton.disabled = true; // Inhabilitar el botón
+  }
+}
+
+// Agregar listeners de eventos a los campos de entrada
+nombreInput.addEventListener("input", validarCampos);
+emailInput.addEventListener("input", validarCampos);
+passwordInput.addEventListener("input", validarCampos);
+
+const list_estud = document.getElementById('estudiantes');
+  const listado = document.getElementById('listado');
+  const  nuevo_estud = document.getElementById('nuevo');
+  const form_estudiante = document.getElementById('crear');
+  const padres = document.getElementById('padres');
+  const form_padres = document.getElementById('list-padres');
+   const general = document.getElementById('generalInfo');
+  const form_general = document.getElementById('general');
+
+  list_estud.addEventListener('click', () => {
+    console.log('mostrar' + listado );
+    if (listado.classList.contains('d-none') || !listado.classList.contains('d-block')) {
+        // Si tiene la clase 'd-none' o no tiene la clase 'd-block', muestra el elemento
+        listado.classList.remove('d-none');
+        listado.classList.add('d-block');
+         form_padres.classList.add('d-none');
+         form_estudiante.classList.add('d-none');
+         form_general.classList.add('d-none');
+    } 
+    });
+
+    nuevo_estud.addEventListener('click', () => {
+    console.log('mostrar form est' + form_estudiante );
+     if (form_estudiante.classList.contains('d-none') || !form_estudiante.classList.contains('d-block')) {
+    // Si está oculto o no tiene un estilo definido, muestra el elemento
+    form_estudiante.classList.remove('d-none');
+    form_estudiante.classList.add('d-block');
+     listado.classList.add('d-none');
+     form_padres.classList.add('d-none');
+     form_general.classList.add('d-none');
+
+  } else {
+    // Si está visible, oculta el elemento
+    form_estudiante.classList.remove('d-block');
+    form_estudiante.classList.add('d-none');
+    listado.classList.remove('d-none');
+     listado.classList.add('d-block');
+      form_padres.classList.add('d-none');
+      form_general.classList.add('d-none');
+  }
+
+    })
+
+    padres.addEventListener('click', () => {
+    console.log('mostrar form est' + form_padres );
+     if (form_padres.classList.contains('d-none') || !form_padres.classList.contains('d-block')) {
+    // Si está oculto o no tiene un estilo definido, muestra el elemento
+    form_padres.classList.remove('d-none');
+    form_padres.classList.add('d-block');
+    listado.classList.add('d-none');
+    form_estudiante.classList.add('d-none');
+    form_general.classList.add('d-none');
+     
+  } else {
+    // Si está visible, oculta el elemento
+    form_padres.classList.remove('d-block');
+    form_padres.classList.add('d-none');
+     form_estudiante.classList.add('d-none');
+      listado.classList.remove('d-none');
+     listado.classList.add('d-block');
+     form_general.classList.add('d-none');
+     
+  }
+
+    })
+
+
+ general.addEventListener('click', () => {
+    console.log('mostrar form est' + form_general );
+     if (form_general.classList.contains('d-none') || !form_general.classList.contains('d-block')) {
+    // Si está oculto o no tiene un estilo definido, muestra el elemento
+    form_general.classList.remove('d-none');
+    form_general.classList.add('d-block');
+    listado.classList.add('d-none');
+    form_estudiante.classList.add('d-none');
+     form_padres.classList.add('d-none');
+  } else {
+    // Si está visible, oculta el elemento
+    form_general.classList.remove('d-block');
+    form_general.classList.add('d-none');
+     form_estudiante.classList.add('d-none');
+      form_padres.classList.add('d-none');
+      listado.classList.remove('d-none');
+     listado.classList.add('d-block');
+  }
+
+    })
+
+let id = ""; 
+let documentNumber = "";
+
+function validarFormulario(){
+  id="";
+  documentNumber = "";
+  const form = document.getElementById('estudentForm');
+  const uuid = crypto.randomUUID();
+    console.log(uuid);
+
+  id= uuid
+  documentNumber = font["numero-documento"].value;
+ 
+  localStorage.setItem('idEstudiante', id);
+  localStorage.setItem('docummentNumber', documentNumber);
+
+
+  form["id"].value = uuid;
+  
+  const formData = new FormData(form);
+  const formDataObject = {};
+  formData.forEach((value, key) => formDataObject[key] = value);
+
+
+
+  google.script.run
+    .withSuccessHandler(function(message) {
+      alert(message); // Muestra el mensaje de éxito o error
+     botonGeneral.disabled  = false;
+     botonPadres.disabled  = false;
+     botonLimpiar.disabled  = false;
+    })
+    .withFailureHandler(function(error) {
+      alert("Error: " + error.message); // Muestra el mensaje de error
+    })
+    .agregarEstudiante(formDataObject);
+
+ 
+}
+
+function abrirFormularioGeneral(){
+ console.log('mostrar form est' + form_general );
+     if (form_general.classList.contains('d-none') || !form_general.classList.contains('d-block')) {
+    // Si está oculto o no tiene un estilo definido, muestra el elemento
+    form_general.classList.remove('d-none');
+    form_general.classList.add('d-block');
+    listado.classList.add('d-none');
+    form_estudiante.classList.add('d-none');
+     form_padres.classList.add('d-none');
+  } else {
+    // Si está visible, oculta el elemento
+    form_general.classList.remove('d-block');
+    form_general.classList.add('d-none');
+     form_estudiante.classList.add('d-none');
+      form_padres.classList.add('d-none');
+      listado.classList.remove('d-none');
+     listado.classList.add('d-block');
+  }
+}
+
+function abrirFormularioPadres(){
+ console.log('mostrar form est' + form_padres );
+     if (form_padres.classList.contains('d-none') || !form_padres.classList.contains('d-block')) {
+    // Si está oculto o no tiene un estilo definido, muestra el elemento
+    form_padres.classList.remove('d-none');
+    form_padres.classList.add('d-block');
+    listado.classList.add('d-none');
+    form_estudiante.classList.add('d-none');
+    form_general.classList.add('d-none');
+     
+  } else {
+    // Si está visible, oculta el elemento
+    form_padres.classList.remove('d-block');
+    form_padres.classList.add('d-none');
+     form_estudiante.classList.add('d-none');
+      listado.classList.remove('d-none');
+     listado.classList.add('d-block');
+     form_general.classList.add('d-none');
+}
+}
+
+function limpiar(form){
+ form.reset(); // Limpia el formulario
+}
+
+
+window.addEventListener("load", buscarDatos);
+
+function buscarDatos(){
+  
+  google.script.run
+  .withSuccessHandler(est => {
+    console.log("muestra datos")
+      console.log(est);
+    est.forEach(x =>{
+      console.log(x[0]);
+    })
+     
+      
+  })
+  .leerEstudiantes()
+}
+
+
+
+</script>

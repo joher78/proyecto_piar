@@ -1,0 +1,36 @@
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script>
+
+  const bton = document.getElementById('aparece');
+  const estud_content = document.getElementById('estudiante-content');
+
+bton.addEventListener('click', () => {
+    console.log('click');
+    document.getElementById('sidebar').classList.toggle('d-none');
+    document.getElementById('sidebar').classList.toggle('d-sm-block');
+        document.getElementById('sidebar').classList.toggle('col-2');
+    document.getElementById('sidebar').classList.toggle('col-6');
+    document.getElementById('estudiante-content').classList.toggle('col-6');
+    document.getElementById('estudiante-content').classList.toggle('col-10');
+    bton.style.display = 'none';
+    });
+
+const bton2 = document.getElementById('close');
+
+bton2.addEventListener('click', () => {
+    console.log('click');
+    document.getElementById('sidebar').classList.toggle('d-none');
+            document.getElementById('sidebar').classList.toggle('col-2');
+    document.getElementById('sidebar').classList.toggle('col-6');
+    document.getElementById('estudiante-content').classList.toggle('col-6');
+    document.getElementById('estudiante-content').classList.toggle('col-10');
+   
+    bton.style.display = 'block';
+    });
+
+  
+  
+  
+</script>
