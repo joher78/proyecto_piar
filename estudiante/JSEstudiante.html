@@ -1,0 +1,546 @@
+<script>
+
+  // Obtener los elementos del DOM
+  const nombreInput = document.getElementById("primer-nombre");
+  const emailInput = document.getElementById("numero-documento");
+  const passwordInput = document.getElementById("grado-aspirante");
+  const boton = document.getElementById("btn-guardar");
+  const botonGeneral = document.getElementById("btn-infoGeneral");
+  const botonPadres = document.getElementById("btn-infoPadres");
+  const botonLimpiar = document.getElementById("btn-limpiar");
+
+
+  // Función para validar los campos de entrada
+  function validarCampos() {
+    if (nombreInput.value && emailInput.value && passwordInput.value) {
+      boton.disabled = false; // Habilitar el botón
+    } else {
+      boton.disabled = true; // Inhabilitar el botón
+    }
+  }
+
+  // Agregar listeners de eventos a los campos de entrada
+  nombreInput.addEventListener("input", validarCampos);
+  emailInput.addEventListener("input", validarCampos);
+  passwordInput.addEventListener("input", validarCampos);
+
+  const list_estud = document.getElementById('estudiantes');
+  const listado = document.getElementById('listado');
+  const nuevo_estud = document.getElementById('nuevo');
+  const form_estudiante = document.getElementById('crear');
+  const padres = document.getElementById('padres');
+  const form_padres = document.getElementById('list-padres');
+  const general = document.getElementById('generalInfo');
+  const form_general = document.getElementById('general');
+  const viewEstudiante = document.getElementById('ver-estudiante');
+
+  list_estud.addEventListener('click', () => {
+    console.log('mostrar' + listado);
+    if (listado.classList.contains('d-none') || !listado.classList.contains('d-block')) {
+      // Si tiene la clase 'd-none' o no tiene la clase 'd-block', muestra el elemento
+      listado.classList.remove('d-none');
+      listado.classList.add('d-block');
+      form_padres.classList.add('d-none');
+      form_estudiante.classList.add('d-none');
+      form_general.classList.add('d-none');
+      viewEstudiante.classList.remove('d-block');
+      viewEstudiante.classList.add('d-none');
+    }
+  });
+
+  nuevo_estud.addEventListener('click', () => {
+    console.log('mostrar form est' + form_estudiante);
+    if (form_estudiante.classList.contains('d-none') || !form_estudiante.classList.contains('d-block')) {
+      // Si está oculto o no tiene un estilo definido, muestra el elemento
+      form_estudiante.classList.remove('d-none');
+      form_estudiante.classList.add('d-block');
+      listado.classList.add('d-none');
+      form_padres.classList.add('d-none');
+      form_general.classList.add('d-none');
+       viewEstudiante.classList.remove('d-block');
+      viewEstudiante.classList.add('d-none');
+
+    } else {
+      // Si está visible, oculta el elemento
+      form_estudiante.classList.remove('d-block');
+      form_estudiante.classList.add('d-none');
+      listado.classList.remove('d-none');
+      listado.classList.add('d-block');
+      form_padres.classList.add('d-none');
+      form_general.classList.add('d-none');
+    }
+
+  })
+
+  padres.addEventListener('click', verform_padres)
+
+  function verform_padres(){
+     console.log('mostrar form padres');
+      console.log(fullEstudiente);
+      let datoE = document.getElementById("dato-estudiante");
+   
+            datoE.innerHTML = `<h4>Estudianrte: ${fullEstudiente['primer nombre']} ${fullEstudiente['segundo nombre']} ${fullEstudiente['primer apellido']} ${fullEstudiente['segundo apellidos']} Documento: ${fullEstudiente['No de identificación']}</h4>`;
+    if (form_padres.classList.contains('d-none') || !form_padres.classList.contains('d-block')) {
+      // Si está oculto o no tiene un estilo definido, muestra el elemento
+      form_padres.classList.remove('d-none');
+      form_padres.classList.add('d-block');
+      listado.classList.add('d-none');
+      form_estudiante.classList.add('d-none');
+      form_general.classList.add('d-none');
+      viewEstudiante.classList.remove('d-block');
+      viewEstudiante.classList.add('d-none');
+    } else {
+      // Si está visible, oculta el elemento
+      form_padres.classList.remove('d-block');
+      form_padres.classList.add('d-none');
+      form_estudiante.classList.add('d-none');
+      listado.classList.remove('d-none');
+      listado.classList.add('d-block');
+      form_general.classList.add('d-none');
+
+    }
+  }
+
+
+  general.addEventListener('click', () => {
+    console.log('mostrar form est' + form_general);
+    if (form_general.classList.contains('d-none') || !form_general.classList.contains('d-block')) {
+      // Si está oculto o no tiene un estilo definido, muestra el elemento
+      form_general.classList.remove('d-none');
+      form_general.classList.add('d-block');
+      listado.classList.add('d-none');
+      form_estudiante.classList.add('d-none');
+      form_padres.classList.add('d-none');
+       viewEstudiante.classList.remove('d-block');
+      viewEstudiante.classList.add('d-none');
+    } else {
+      // Si está visible, oculta el elemento
+      form_general.classList.remove('d-block');
+      form_general.classList.add('d-none');
+      form_estudiante.classList.add('d-none');
+      form_padres.classList.add('d-none');
+      listado.classList.remove('d-none');
+      listado.classList.add('d-block');
+    }
+
+  })
+
+  let id = "";
+  let documentNumber = "";
+   let fullEstudiente = "";
+
+  function validarFormulario() {
+    id = "";
+    documentNumber = "";
+    const form = document.getElementById('estudentForm');
+    const uuid = crypto.randomUUID();
+    console.log(uuid);
+
+    id = uuid
+    documentNumber = form["numero-documento"].value;
+
+    localStorage.setItem('idEstudiante', id);
+    localStorage.setItem('docummentNumber', documentNumber);
+
+
+    form["id"].value = uuid;
+
+    const formData = new FormData(form);
+    const formDataObject = {};
+    formData.forEach((value, key) => formDataObject[key] = value);
+
+
+
+
+    google.script.run
+      .withSuccessHandler(function (message) {
+        alert(message); // Muestra el mensaje de éxito o error
+        botonGeneral.disabled = false;
+        botonPadres.disabled = false;
+        botonLimpiar.disabled = false;
+      })
+      .withFailureHandler(function (error) {
+        alert("Error: " + error.message); // Muestra el mensaje de error
+      })
+      .agregarEstudiante(formDataObject);
+
+
+  }
+
+  function guardarPadre(){
+ console.log('mostrar form estudiante');
+      console.log(fullEstudiente);
+
+    id = "";
+    documentNumber = "";
+    const form = document.getElementById('salvarPadres');
+    const uuid = crypto.randomUUID();
+    console.log(uuid);
+
+    id = uuid
+     alert("guardar padre:");
+
+     form["id"].value = uuid;
+
+     form["id-estudiante"].value = fullEstudiente['id'];
+
+      const formData = new FormData(form);
+    const formDataObject = {};
+    formData.forEach((value, key) => formDataObject[key] = value);
+
+    google.script.run
+      .withSuccessHandler(function (message) {
+        alert(message); // Muestra el mensaje de éxito o error
+       
+      })
+      .withFailureHandler(function (error) {
+        alert("Error: " + error.message); // Muestra el mensaje de error
+      })
+      .agregarPadre(formDataObject);
+  }
+
+  function abrirFormularioGeneral() {
+    console.log('mostrar form est' + form_general);
+    if (form_general.classList.contains('d-none') || !form_general.classList.contains('d-block')) {
+      // Si está oculto o no tiene un estilo definido, muestra el elemento
+      form_general.classList.remove('d-none');
+      form_general.classList.add('d-block');
+      listado.classList.add('d-none');
+      form_estudiante.classList.add('d-none');
+      form_padres.classList.add('d-none');
+    } else {
+      // Si está visible, oculta el elemento
+      form_general.classList.remove('d-block');
+      form_general.classList.add('d-none');
+      form_estudiante.classList.add('d-none');
+      form_padres.classList.add('d-none');
+      listado.classList.remove('d-none');
+      listado.classList.add('d-block');
+    }
+  }
+
+  function abrirFormularioPadres() {
+    console.log(fullEstudiente);
+    let datoE = document.getElementById("dato-estudiante");
+   
+            datoE.innerHTML = `<h6>${fullEstudiente['id']}</h6>`;
+
+    if (form_padres.classList.contains('d-none') || !form_padres.classList.contains('d-block')) {
+      // Si está oculto o no tiene un estilo definido, muestra el elemento
+      form_padres.classList.remove('d-none');
+      form_padres.classList.add('d-block');
+      listado.classList.add('d-none');
+      form_estudiante.classList.add('d-none');
+      form_general.classList.add('d-none');
+
+    } else {
+      // Si está visible, oculta el elemento
+      form_padres.classList.remove('d-block');
+      form_padres.classList.add('d-none');
+      form_estudiante.classList.add('d-none');
+      listado.classList.remove('d-none');
+      listado.classList.add('d-block');
+      form_general.classList.add('d-none');
+    }
+  }
+
+  function limpiar(form) {
+    form.reset(); // Limpia el formulario
+  }
+
+
+  window.addEventListener("load", buscarDatos);
+
+  function buscarDatos() {
+
+    google.script.run
+      .withSuccessHandler(est => {
+        console.log("muestra datos")
+        let tableBody = document.getElementById('tableBody-estudiante');
+        var templete = document.getElementById('rowTemplete');
+        var temmpleteContent = templete.content;
+        console.log(est);
+        est.forEach(x => {
+          const tr = temmpleteContent.cloneNode(true);
+          const documento = tr.querySelector(".template-doc")
+          const primerNombre = tr.querySelector(".template-primerNombre")
+          const segundoNombre = tr.querySelector(".template-segNombre")
+          const primmerApellido = tr.querySelector(".template-primerApellido")
+          const segundoApellido = tr.querySelector(".template-segundoApellido")
+          const edad = tr.querySelector(".template-edad")
+          const grado = tr.querySelector(".template-grado")
+          const salon = tr.querySelector(".template-salon")
+          const ver = tr.querySelector(".ver")
+          const editar = tr.querySelector(".editar")
+          const borrar = tr.querySelector(".borrar")
+
+
+
+          documento.textContent = x[8];
+          primerNombre.textContent = x[1];
+          segundoNombre.textContent = x[2];
+          primmerApellido.textContent = x[3];
+          segundoApellido.textContent = x[4];
+          edad.textContent = calcularEdad(x[6]);
+          grado.textContent = x[15];
+          salon.textContent = x[16];
+          ver.dataset.id = x[0];
+          editar.dataset.id = x[0];
+          borrar.dataset.id = x[0];
+
+          tableBody.appendChild(tr);
+
+
+        })
+
+
+      })
+      .leerEstudiantes()
+  }
+
+  function calcularEdad(fechaNacimiento) {
+
+    const hoy = new Date();
+    const nacimiento = new Date(fechaNacimiento);
+    let edad = hoy.getFullYear() - nacimiento.getFullYear();
+    const mes = hoy.getMonth() - nacimiento.getMonth();
+
+    if (mes < 0 || (mes === 0 && hoy.getDate() < nacimiento.getDate())) {
+      edad--;
+    }
+    return edad;
+  }
+  function optenerId(button) {
+    const tableRow = button.parentNode.parentNode;
+    return button.dataset.id;
+  }
+
+  function verEstudiante(button) {
+    const id = optenerId(button);
+    console.log('id  ' + id);
+
+    google.script.run
+      .withSuccessHandler(estudi => {
+        const estudiante = JSON.parse(estudi);
+      //  console.log(estudiante);
+        mostrarDatosEstudiante(estudiante);
+      })
+      .estudianteId(id);
+
+  }
+
+  function editarEstudiante(button) {
+    const id = optenerId(button);
+    console.log('id  ' + id);
+
+  }
+
+  function borrarEstudiante(button) {
+    const id = optenerId(button);
+    console.log('id  ' + id);
+
+  }
+
+  function mostrarDatosEstudiante(estudiante) {
+
+
+
+ if (viewEstudiante.classList.contains('d-none') || !viewEstudiante.classList.contains('d-block')) {
+            
+              viewEstudiante.classList.remove('d-none');
+              viewEstudiante.classList.add('d-block');
+              listado.classList.remove('d-block');
+              listado.classList.add('d-none');
+            } else {
+              viewEstudiante.classList.remove('d-block');
+              viewEstudiante.classList.add('d-none');
+              
+            }
+
+
+    // Crear elementos HTML para mostrar los datos
+    for (const propiedad in estudiante) {
+
+      if (estudiante.hasOwnProperty(propiedad)) {
+
+        if (propiedad == "estudiante") {
+
+          const datosDiv = document.getElementById('datosEstudiante');
+          datosDiv.innerHTML = ''; // Limpiar contenido anterior
+          fullEstudiente = estudiante[propiedad];
+          for (const estuian in estudiante[propiedad]) {
+           
+            
+            const row = document.createElement('div');
+            row.classList.add('row');
+
+            const colLabel = document.createElement('div');
+            colLabel.classList.add('col-6');
+            colLabel.innerHTML = `<h6>${estuian}</h6>`;
+
+            const colValue = document.createElement('div');
+            colValue.classList.add('col-6');
+            let valor = estudiante[propiedad][estuian];
+
+           
+            colValue.innerHTML = `<span>${valor}</span>`;
+
+            row.appendChild(colLabel);
+            row.appendChild(colValue);
+            datosDiv.appendChild(row);
+
+          }
+
+        }
+
+        let tableBody = '';
+        tableBody = document.getElementById('tableBody-padres');
+
+        var templete = document.getElementById('rowTempletePadres');
+        const tablePadres = document.getElementById('listado-padres');
+
+        if (propiedad == "padres") {
+
+          const datosDiv = document.getElementById('datospadres');
+          datosDiv.innerHTML = ''; // Limpiar contenido anterior
+          tableBody.innerHTML = '';
+
+          const row = document.createElement('div');
+          row.classList.add('row');
+
+          let colLabel = document.createElement('div');
+          let colValue = document.createElement('div');
+          let valor = "";
+
+          let btnPadre = document.createElement('div');
+          btnPadre.innerHTML = `<button class="btn btn-primary" onclick="verform_padres()" >Guardar Padre</button>`;
+
+
+          if (estudiante[propiedad].length === 0) {
+
+            if (tablePadres.classList.contains('d-none') || !tablePadres.classList.contains('d-block')) {
+            
+              tablePadres.classList.remove('d-none');
+              tablePadres.classList.add('d-block');
+            } else {
+              tablePadres.classList.remove('d-block');
+              tablePadres.classList.add('d-none');
+              
+            }
+
+
+            colLabel.classList.add('col-12');
+            colLabel.innerHTML = `<h6>No hay informacion de padres</h6>`;
+
+            colValue.innerHTML = `<span>${valor}</span>`;
+
+            row.appendChild(colLabel);
+            row.appendChild(colValue);
+            row.appendChild(btnPadre);
+            datosDiv.appendChild(row);
+
+          } else {
+
+
+            if (tablePadres.classList.contains('d-none') || !form_estudiante.classList.contains('d-block')) {
+             
+              tablePadres.classList.remove('d-none');
+              tablePadres.classList.add('d-block');
+            } else {
+              tablePadres.classList.remove('d-block');
+              tablePadres.classList.add('d-none');
+              
+            }
+
+
+            var temmpleteContent = '';
+
+            tableBody.innerHTML = '';
+
+            temmpleteContent = templete.content;
+
+            var tr = "";
+
+            for (const padres in estudiante[propiedad]) {
+
+              tr = temmpleteContent.cloneNode(true);
+              const nombresPadres = tr.querySelector(".template-nombres-padres")
+              const apellidosPaddres = tr.querySelector(".template-apellidos-padres")
+              const documentoPadres = tr.querySelector(".template-documento-padres")
+              const telefonoPadres = tr.querySelector(".template-telefono-padres")
+              const correoPadres = tr.querySelector(".template-correo-padres")
+              const ocupacionPadres = tr.querySelector(".template-ocupacion-padres")
+              const educacionPadres = tr.querySelector(".template-educacion-padres")
+              const parentescoPadres = tr.querySelector(".template-parentesco-padres")
+
+
+              nombresPadres.textContent = estudiante[propiedad][padres]['nombres'];
+              apellidosPaddres.textContent = estudiante[propiedad][padres]['apellidos'];
+              documentoPadres.textContent = estudiante[propiedad][padres]['No de identificación'];
+              telefonoPadres.textContent = estudiante[propiedad][padres]['Teléfono'];
+              correoPadres.textContent = estudiante[propiedad][padres]['Correo electrónico'];
+              ocupacionPadres.textContent = estudiante[propiedad][padres]['Ocupación'];
+              educacionPadres.textContent = estudiante[propiedad][padres]['Nivel educativo alcanzado'];
+              parentescoPadres.textContent = estudiante[propiedad][padres]['Parentesco'];
+
+              tableBody.appendChild(tr);
+
+
+            }
+
+          }
+
+        }
+
+        if (propiedad == "informacionGeneral") {
+
+          console.log("propieda " + propiedad);
+
+          console.log("tama general " + Object.keys(estudiante[propiedad]).length)
+          
+          const datosDiv = document.getElementById('datosgeneral');
+          datosDiv.innerHTML = ''; // Limpiar contenido anterior
+          const row = document.createElement('div');
+          let colLabel = document.createElement('div');
+          let colValue = document.createElement('div');
+
+          if (Object.keys(estudiante[propiedad]).length > 10) {
+            colLabel.classList.add('col-12');
+            colLabel.innerHTML = `<h6>No hay informacion general del estudiente</h6>`;
+          } else {
+
+            console.log("ingresa en el else ");
+ for (const estuian in estudiante[propiedad]) {
+              console.log(estuian);
+            const row = document.createElement('div');
+            row.classList.add('row');
+
+            const colLabel = document.createElement('div');
+            colLabel.classList.add('col-6');
+            colLabel.innerHTML = `<h6>${estuian}</h6>`;
+
+            const colValue = document.createElement('div');
+            colValue.classList.add('col-6');
+            let valor = estudiante[propiedad][estuian];
+
+            colValue.innerHTML = `<span>${valor}</span>`;
+            row.appendChild(colLabel);
+            row.appendChild(colValue);
+            datosDiv.appendChild(row);
+           
+
+          }
+
+          }
+
+          row.appendChild(colLabel);
+          row.appendChild(colValue);
+          datosDiv.appendChild(row);
+
+        }
+
+      }
+    }
+  }
+
+</script>

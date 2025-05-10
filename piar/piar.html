@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Información del Estudiante</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-label {
+            font-weight: bold;
+        
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2px;
+        }
+        .card-header {
+            background-color: #f0f7ff;
+            font-weight: bold;
+        }
+        .section-title {
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+            color: #0d6efd;
+        }
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background-color: white;
+            border-radius: 10px;
+           
+        }
+        button{
+            height: 35px
+        }
+        .input-group-text{
+            padding: 0 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class=" bg-primary">
+        <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">PIAR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+              aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="salud.html">Entorno Salud</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="piar1.html">piar</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="hogar.html">Entorno Hogar</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="educativo.html">Entorno Educativo</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="estudiantes.html">Estudiantes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="ajuste.html">Ajustes Razonables</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="acuerdo.html">Acta de Acuerdo</a>
+                </li>
+    
+                <li class="nav-item">
+                  <a class="nav-link" href="caracteristicas_estudiante.html">Caracteristicas estudiante</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="planmejoramiento.html">plan </a>
+                </li>
+              </ul>
+              <span class="navbar-text">
+                Inclusion
+              </span>
+            </div>
+          </div>
+        </nav>
+      </div>
+    <div class="container">
+        <h2 class="text-center mb-4">Piar</h2>
+     
+
+        <form id="piar">
+            <!-- Datos de identificación -->
+            <div class="card">
+                <div class="card-header">
+                    Datos de Estudiante
+                </div>
+                <div class="card-body">
+                    <div class="row">
+
+                       
+                       
+                        <div class="col-md-8 mb-3">
+                            <label for="id_estudiante" class="form-label">Estudiante:</label>
+                            
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1"><button class=" btn btn-primary m-0" type="submit"><i class="bi bi-search"></i></button></span>
+                                <input type="text" class="form-control" id="id_estudiante" name="id_estudiante" required>
+                              </div>
+                        </div>
+                        <div class="col-4 mb-3">
+                            <label for="edadEstudiante" class="form-label">Edad del Estudiante:</label>
+                            <input type="number" class="form-control" id="edadEstudiante" name="edadEstudiante" min="1" max="100">
+                        </div>
+                      
+    
+                    </div>
+                </div>
+            </div>
+
+
+           <div class="card">
+                <div class="card-header">
+                    Datos de Estudiante
+                </div>
+                <div class="card-body">
+                    <div class="row">
+
+                       
+                       
+                        <div class="col-12 mb-3">
+                            <label for="responsable" class="form-label">Responsable:</label>
+                            
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1"><button class=" btn btn-primary" type="submit"><i class="bi bi-search"></i></button></span>
+                                <input type="text" class="form-control" id="responsable" name="responsable" required>
+                              </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <!-- Información Escolar -->
+            <div class="card">
+                <div class="card-header">
+                    Información Escolar
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="fechaCreacion" class="form-label">Fecha de Creación:</label>
+                            <input type="date" class="form-control" id="fechaCreacion" name="fechaCreacion" required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="institucion" class="form-label">Institución:</label>
+                            <input type="text" class="form-control" id="institucion" name="institucion">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="añoLectivo" class="form-label">Año Lectivo:</label>
+                            <input type="text" class="form-control" id="añoLectivo" name="añoLectivo">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="grado" class="form-label">Grado:</label>
+                            <input type="text" class="form-control" id="grado" name="grado">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="salon" class="form-label">Salón:</label>
+                            <input type="text" class="form-control" id="salon" name="salon">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="jornada" class="form-label">Jornada:</label>
+                            <select class="form-select" id="jornada" name="jornada">
+                                <option value="">Seleccionar...</option>
+                                <option value="Mañana">Mañana</option>
+                                <option value="Tarde">Tarde</option>
+                                <option value="Noche">Noche</option>
+                                <option value="Única">Única</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                <button type="reset" class="btn btn-secondary me-md-2">
+                    <i class="bi bi-eraser"></i> Limpiar
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save"></i> Guardar
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <script>
+        document.getElementById('formEstudiante').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Formulario enviado correctamente');
+            // Aquí puedes agregar el código para procesar el formulario
+        });
+    </script>
+</body>
+</html>

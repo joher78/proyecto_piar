@@ -17,6 +17,8 @@ function agregarEstudiante(form) {
   const municipio = form["municipio"];
   const departamento = form["departamento"];
   const gradoAspirante = form["grado-aspirante"];
+  const salon = form["salon"];
+  const estado = "Activo";
 
   sheetEstudiante.appendRow([
     id,
@@ -34,11 +36,19 @@ function agregarEstudiante(form) {
     barrio,
     municipio,
     departamento,
-    gradoAspirante
+    gradoAspirante,
+    salon,
+    estado
 
   ])
   return "Estudiannte agregado"
   
+}
+
+function agregarPadre(form) {
+
+ Logger.log(form);
+  return "Padre agregado" 
 }
 
 function crearNuevoId(){
@@ -60,6 +70,4 @@ maxId = id;
  
 }
 
-function test (){
-  console.log("valor " + crearNuevoId())
-}
+

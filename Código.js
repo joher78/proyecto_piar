@@ -13,7 +13,7 @@ function doGet(e) {
 //Create Navigation Bar
 function getNavbar(activePage) {
   var scriptURLHome = getScriptURL();
-  var scriptURLPage1 = getScriptURL("mode=Estudiantes");
+  var scriptURLPage1 = getScriptURL("mode=estudiante/Estudiantes");
   var scriptURLPage2 = getScriptURL("mode=Profesor");
   var scriptURLPage3 = getScriptURL("mode=Page3");
 
@@ -30,7 +30,7 @@ function getNavbar(activePage) {
             <a class="nav-item nav-link ${activePage === 'Index' ? 'active' : ''}" href="${scriptURLHome}">Home</a>
              </li>
             <li class="nav-item">
-            <a class="nav-item nav-link ${activePage === 'Estudiantes' ? 'active' : ''}" href="${scriptURLPage1}">Estudiantes</a>
+            <a class="nav-item nav-link ${activePage === 'estudiante/Estudiantes' ? 'active' : ''}" href="${scriptURLPage1}">Estudiantes</a>
              </li>
             <li class="nav-item">
             <a class="nav-item nav-link ${activePage === 'Profesor' ? 'active' : ''}" href="${scriptURLPage2}">Profesores</a>
