@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario PIAR - Actores y Estrategias</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .actor-section {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #0d6efd;
+        }
+        
+        .add-actor-btn {
+            margin-bottom: 20px;
+        }
+        
+        .remove-actor-btn {
+            color: #dc3545;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .actor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class=" bg-primary">
+        <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">PIAR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+              aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="salud.html">Entorno Salud</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="hogar.html">Entorno Hogar</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="educativo.html">Entorno Educativo</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="estudiantes.html">Estudiantes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="ajuste.html">Ajustes Razonables</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="acuerdo.html">Acta de Acuerdo</a>
+                </li>
+    
+                <li class="nav-item">
+                  <a class="nav-link" href="caracteristicas_estudiante.html">Caracteristicas estudiante</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="planmejoramiento.html">plan </a>
+                </li>
+              </ul>
+              <span class="navbar-text">
+                Inclusion
+              </span>
+            </div>
+          </div>
+        </nav>
+      </div>
+
+
+    <div class="container mt-4 mb-5">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h2 class="text-center mb-0">Formulario PIAR - Actores y Estrategias</h2>
+            </div>
+            
+            <div class="card-body">
+                <form class="needs-validation" novalidate id="piar-form">
+                    <!-- Identificación -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="id_piar" class="form-label fw-bold">ID PIAR</label>
+                            <input type="text" class="form-control" id="id_piar" required>
+                            <div class="invalid-feedback">
+                                Por favor ingrese el ID PIAR.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <!-- Instrucciones -->
+                    <div class="alert alert-info mb-4">
+                        <h5 class="alert-heading">Instructivo</h5>
+                        <p class="mb-0">En esta sección se registran los diferentes actores que participan en el proceso de implementación del PIAR, las acciones específicas que realizarán y las estrategias a implementar para apoyar al estudiante. Complete la información para cada actor involucrado.</p>
+                    </div>
+                    
+                    <!-- Contenedor de actores -->
+                    <div id="actores-container">
+                        <!-- Actor inicial (plantilla) -->
+                        <div class="actor-section" id="actor-1">
+                            <div class="actor-header">
+                                <h4>Actor #<span class="actor-number">1</span></h4>
+                                <span class="remove-actor-btn" title="Eliminar actor" onclick="removeActor(this)"><i class="bi bi-x-circle"></i> Eliminar</span>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <label class="form-label fw-bold">Tipo de Actor</label>
+                                    <select class="form-select tipo-actor" required>
+                                        <option value="" selected disabled>Seleccione el tipo de actor</option>
+                                        <option value="docente">Docente</option>
+                                        <option value="docente_apoyo">Docente de Apoyo</option>
+                                        <option value="coordinador">Coordinador</option>
+                                        <option value="orientador">Orientador Escolar</option>
+                                        <option value="psicologo">Psicólogo</option>
+                                        <option value="familiar">Familiar</option>
+                                        <option value="terapeuta">Terapeuta</option>
+                                        <option value="fonoaudiologo">Fonoaudiólogo</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Por favor seleccione el tipo de actor.
+                                    </div>
+                                    <div class="otro-actor-div mt-2 collapse">
+                                        <input type="text" class="form-control otro-actor" placeholder="Especifique el tipo de actor">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Nombre Completo</label>
+                                    <input type="text" class="form-control" placeholder="Nombre completo del actor" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese el nombre completo.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Información de Contacto</label>
+                                    <input type="text" class="form-control" placeholder="Teléfono o correo electrónico">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <label class="form-label fw-bold">Acciones que Realizará</label>
+                                    <textarea class="form-control" rows="3" placeholder="Describa las acciones específicas que realizará este actor" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese las acciones a realizar.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <label class="form-label fw-bold">Estrategias a Implementar</label>
+                                    <textarea class="form-control" rows="3" placeholder="Describa las estrategias concretas que implementará este actor" required></textarea>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese las estrategias a implementar.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Frecuencia</label>
+                                    <select class="form-select">
+                                        <option value="" selected disabled>Seleccione la frecuencia</option>
+                                        <option value="diaria">Diaria</option>
+                                        <option value="semanal">Semanal</option>
+                                        <option value="quincenal">Quincenal</option>
+                                        <option value="mensual">Mensual</option>
+                                        <option value="trimestral">Trimestral</option>
+                                        <option value="otra">Otra</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-bold">Tiempo de Implementación</label>
+                                    <div class="input-group">
+                                        <input type="number" class="form-control" placeholder="Cantidad">
+                                        <select class="form-select">
+                                            <option value="dias">Días</option>
+                                            <option value="semanas">Semanas</option>
+                                            <option value="meses" selected>Meses</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botón para agregar actor -->
+                    <div class="d-grid gap-2 col-md-6 mx-auto add-actor-btn">
+                        <button type="button" class="btn btn-outline-primary" id="add-actor-btn">
+                            <i class="bi bi-plus-circle"></i> Agregar Otro Actor
+                        </button>
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <!-- Observaciones generales -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <label for="observaciones" class="form-label fw-bold">Observaciones Generales</label>
+                            <textarea class="form-control" id="observaciones" rows="3" placeholder="Agregue cualquier observación general sobre la implementación de estrategias"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Compromisos -->
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <label for="compromisos" class="form-label fw-bold">Compromisos Adquiridos</label>
+                            <textarea class="form-control" id="compromisos" rows="3" placeholder="Describa los compromisos adquiridos por los diferentes actores"></textarea>
+                        </div>
+                    </div>
+                    
+                    <!-- Fecha de seguimiento -->
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label for="fecha_seguimiento" class="form-label fw-bold">Fecha de Próximo Seguimiento</label>
+                            <input type="date" class="form-control" id="fecha_seguimiento">
+                        </div>
+                    </div>
+                    
+                    <!-- Botones del formulario -->
+                    <div class="row mt-4">
+                        <div class="col-12 text-center">
+                            <button class="btn btn-primary btn-lg px-5 me-3" type="submit">Guardar Información</button>
+                            <button class="btn btn-outline-secondary btn-lg px-5" type="reset">Limpiar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.8.1/font/bootstrap-icons.min.css">
+    
+    <script>
+        // Script para validación de formulario
+        (function () {
+            'use strict'
+            
+            // Obtener todos los formularios a los que queremos aplicar estilos de validación personalizados
+            var forms = document.querySelectorAll('.needs-validation')
+            
+            // Bucle para evitar el envío y aplicar validación
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        } else {
+                            // Si el formulario es válido, podría guardarse la información aquí
+                            event.preventDefault()
+                            alert('Información guardada correctamente')
+                        }
+                        
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+        
+        // Variable para contar el número de actores
+        let actorCount = 1;
+        
+        // Función para agregar un nuevo actor
+        document.getElementById('add-actor-btn').addEventListener('click', function() {
+            // Incrementar contador
+            actorCount++;
+            
+            // Clonar el primer actor
+            const actorTemplate = document.querySelector('#actor-1').cloneNode(true);
+            
+            // Actualizar ID y número
+            actorTemplate.id = 'actor-' + actorCount;
+            actorTemplate.querySelector('.actor-number').textContent = actorCount;
+            
+            // Resetear valores de los campos
+            const inputs = actorTemplate.querySelectorAll('input, textarea, select');
+            inputs.forEach(input => {
+                input.value = '';
+                if (input.classList.contains('tipo-actor')) {
+                    input.selectedIndex = 0;
+                }
+            });
+            
+            // Resetear campos adicionales
+            const otroActorDiv = actorTemplate.querySelector('.otro-actor-div');
+            otroActorDiv.classList.remove('show');
+            
+            // Agregar el nuevo actor al contenedor
+            document.getElementById('actores-container').appendChild(actorTemplate);
+            
+            // Reenlazar eventos a los nuevos elementos
+            setupActorEventListeners(actorTemplate);
+        });
+        
+        // Función para eliminar un actor
+        function removeActor(element) {
+            const actorElement = element.closest('.actor-section');
+            
+            // No permitir eliminar si solo queda un actor
+            if (document.querySelectorAll('.actor-section').length > 1) {
+                actorElement.remove();
+                
+                // Actualizar numeración
+                updateActorNumbers();
+            } else {
+                alert('Debe tener al menos un actor registrado.');
+            }
+        }
+        
+        // Función para actualizar la numeración de los actores
+        function updateActorNumbers() {
+            const actorSections = document.querySelectorAll('.actor-section');
+            actorSections.forEach((actor, index) => {
+                actor.querySelector('.actor-number').textContent = index + 1;
+                actor.id = 'actor-' + (index + 1);
+            });
+            
+            // Actualizar contador global
+            actorCount = actorSections.length;
+        }
+        
+        // Función para configurar los event listeners en un actor
+        function setupActorEventListeners(actorElement) {
+            const tipoActor = actorElement.querySelector('.tipo-actor');
+            const otroActorDiv = actorElement.querySelector('.otro-actor-div');
+            const otroActor = actorElement.querySelector('.otro-actor');
+            
+            tipoActor.addEventListener('change', function() {
+                if (this.value === 'otro') {
+                    otroActorDiv.classList.add('show');
+                    otroActor.required = true;
+                } else {
+                    otroActorDiv.classList.remove('show');
+                    otroActor.required = false;
+                    otroActor.value = '';
+                }
+            });
+        }
+        
+        // Configurar event listeners para el actor inicial
+        document.querySelectorAll('.actor-section').forEach(actor => {
+            setupActorEventListeners(actor);
+        });
+    </script>
+</body>
+</html>

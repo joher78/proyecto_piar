@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario PIAR</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div>       
+    <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+     <div class="container-fluid">
+       <a class="navbar-brand" href="index.html">PIAR</a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarText">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+             <a class="nav-link" href="index.html">Home</a>
+           </li>
+       
+           <li class="nav-item">
+             <a class="nav-link" href="estudiantes.html">Estudiantes</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="profesor.html">Profesor</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="colegio.html">Colegio</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="colegio.html">Materias</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="informacigeneral.html">Información</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="acudiente.html">acudiente</a>
+           </li>
+         </ul>
+         <span class="navbar-text">
+           Inclusion
+         </span>
+       </div>
+     </div>
+   </nav>
+   </div>
+
+
+    <div class="container mt-4">
+        <h2 class="text-center mb-4">Formulario de Registro PIAR</h2>
+        
+        <form class="row g-3 needs-validation" novalidate>
+            <!-- ID PIAR y Documento estudiante -->
+            <div class="col-md-6">
+                <label for="id_piar" class="form-label">ID PIAR</label>
+                <input type="text" class="form-control" id="id_piar" required>
+                <div class="invalid-feedback">
+                    Por favor ingrese el ID PIAR.
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <label for="documento_estudiante" class="form-label">Documento del Estudiante</label>
+                <input type="text" class="form-control" id="documento_estudiante" required>
+                <div class="invalid-feedback">
+                    Por favor ingrese el documento del estudiante.
+                </div>
+            </div>
+            
+            <!-- Número de hermanos y lugar entre hermanos -->
+            <div class="col-md-6">
+                <label for="numero_hermanos" class="form-label">Número de Hermanos</label>
+                <input type="number" class="form-control" id="numero_hermanos" min="0" required>
+                <div class="invalid-feedback">
+                    Por favor ingrese el número de hermanos.
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <label for="lugar_hermanos" class="form-label">Lugar entre Hermanos</label>
+                <input type="number" class="form-control" id="lugar_hermanos" min="1" required>
+                <div class="invalid-feedback">
+                    Por favor ingrese el lugar entre hermanos.
+                </div>
+            </div>
+            
+            <!-- Persona de apoyo -->
+            <div class="col-md-12">
+                <label for="persona_apoyo" class="form-label">Persona de Apoyo</label>
+                <input type="text" class="form-control" id="persona_apoyo" required>
+                <div class="invalid-feedback">
+                    Por favor ingrese el nombre de la persona de apoyo.
+                </div>
+            </div>
+            
+            <!-- Subsidios -->
+            <div class="col-md-6">
+                <label class="form-label">Subsidios</label>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="subsidios" id="subsidios_si" value="si">
+                    <label class="form-check-label" for="subsidios_si">
+                        Sí
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="subsidios" id="subsidios_no" value="no" checked>
+                    <label class="form-check-label" for="subsidios_no">
+                        No
+                    </label>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <label for="tipo_subsidios" class="form-label">Tipo de Subsidios</label>
+                <select class="form-select" id="tipo_subsidios">
+                    <option value="" selected>Seleccione una opción</option>
+                    <option value="familiar">Subsidio Familiar</option>
+                    <option value="educacion">Subsidio de Educación</option>
+                    <option value="alimentacion">Subsidio de Alimentación</option>
+                    <option value="vivienda">Subsidio de Vivienda</option>
+                    <option value="otro">Otro</option>
+                </select>
+            </div>
+            
+            <!-- Dirección, Municipio y Departamento -->
+            <div class="col-md-12">
+                <label for="direccion_residencia" class="form-label">Dirección de Residencia</label>
+                <input type="text" class="form-control" id="direccion_residencia" required>
+                <div class="invalid-feedback">
+                    Por favor ingrese la dirección de residencia.
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <label for="municipio_residencia" class="form-label">Municipio de Residencia</label>
+                <input type="text" class="form-control" id="municipio_residencia" required>
+                <div class="invalid-feedback">
+                    Por favor ingrese el municipio de residencia.
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <label for="departamento_residencia" class="form-label">Departamento de Residencia</label>
+                <input type="text" class="form-control" id="departamento_residencia" required>
+                <div class="invalid-feedback">
+                    Por favor ingrese el departamento de residencia.
+                </div>
+            </div>
+            
+            <!-- Botones del formulario -->
+            <div class="col-12 mt-4">
+                <button class="btn btn-primary" type="submit">Guardar</button>
+                <button class="btn btn-secondary" type="reset">Limpiar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Script para validación de formulario
+        (function () {
+            'use strict'
+            
+            // Obtener todos los formularios a los que queremos aplicar estilos de validación personalizados
+            var forms = document.querySelectorAll('.needs-validation')
+            
+            // Bucle para evitar el envío y aplicar validación
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        }
+                        
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+        
+        // Mostrar/ocultar campo tipo de subsidios según la selección
+        document.querySelectorAll('input[name="subsidios"]').forEach(function(radio) {
+            radio.addEventListener('change', function() {
+                const tipoSubsidio = document.getElementById('tipo_subsidios');
+                if (this.value === 'si') {
+                    tipoSubsidio.required = true;
+                    tipoSubsidio.disabled = false;
+                } else {
+                    tipoSubsidio.required = false;
+                    tipoSubsidio.disabled = true;
+                    tipoSubsidio.value = '';
+                }
+            });
+        });
+        
+        // Estado inicial del campo tipo subsidio
+        document.getElementById('tipo_subsidios').disabled = true;
+    </script>
+</body>
+</html>

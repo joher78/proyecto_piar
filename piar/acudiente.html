@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Información de Salud PIAR</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px 0;
+        }
+        .form-container {
+            max-width: 950px;
+            margin: 0 auto;
+        }
+        .card {
+            border: none;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+        }
+        .card-header {
+            background-color: #dc3545;
+            color: white;
+            font-weight: 500;
+        }
+        .required-field::after {
+            content: " *";
+            color: red;
+        }
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+        .form-section {
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .form-section:last-child {
+            border-bottom: none;
+        }
+        .form-section-title {
+            color: #dc3545;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .input-group-text {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+
+  <div >       
+    <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+     <div class="container-fluid">
+       <a class="navbar-brand" href="index.html">PIAR</a>
+       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+         <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarText">
+         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+           <li class="nav-item">
+             <a class="nav-link" href="index.html">Home</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="salud.html">Entorno Salud</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="hogar.html">Entorno Hogar</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="educativo.html">Entorno Educativo</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="estudiantes.html">Estudiantes</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="ajuste.html">Ajustes Razonables</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="acuerdo.html">Acta de Acuerdo</a>
+           </li>
+         </ul>
+         <span class="navbar-text">
+           Inclusion
+         </span>
+       </div>
+     </div>
+   </nav>
+   
+</div>          
+
+    <div class="container form-container">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center mb-0">Información de Salud - PIAR</h3>
+            </div>
+            <div class="card-body">
+                <p class="text-muted text-center mb-4">Complete la información de salud del estudiante para el Plan Individual de Ajustes Razonables</p>
+                
+                <form id="saludForm" class="needs-validation" novalidate>
+                    <!-- Identificación -->
+                    <div class="form-section">
+                        <h4 class="form-section-title">Información de Identificación</h4>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="id_piar" class="form-label required-field">ID PIAR</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-hash"></i></span>
+                                    <input type="text" class="form-control" id="id_piar" placeholder="Ej: PIAR-2023-001" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese el ID PIAR.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="documento_estudiante" class="form-label required-field">Documento Estudiante</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-card-text"></i></span>
+                                    <input type="text" class="form-control" id="documento_estudiante" placeholder="Número de documento del estudiante" required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese el documento del estudiante.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Afiliación al sistema de salud -->
+                    <div class="form-section">
+                        <h4 class="form-section-title">Afiliación al Sistema de Salud</h4>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label required-field">Afiliación al sistema de salud</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="afiliacion_salud" id="afiliacion_si" value="si" required>
+                                    <label class="form-check-label" for="afiliacion_si">
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="afiliacion_salud" id="afiliacion_no" value="no">
+                                    <label class="form-check-label" for="afiliacion_no">
+                                        No
+                                    </label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Por favor seleccione una opción.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="eps" class="form-label">EPS</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-hospital"></i></span>
+                                    <input type="text" class="form-control" id="eps" placeholder="Nombre de la EPS">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Tipo de afiliación</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tipo_afiliacion" id="contributivo" value="contributivo">
+                                    <label class="form-check-label" for="contributivo">
+                                        Contributivo
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tipo_afiliacion" id="subsidiado" value="subsidiado">
+                                    <label class="form-check-label" for="subsidiado">
+                                        Subsidiado
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="lugar_atencion" class="form-label required-field">Lugar donde le atienden en caso de emergencia</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-geo-alt"></i></span>
+                                    <input type="text" class="form-control" id="lugar_atencion" placeholder="Hospital, clínica, centro de salud, etc." required>
+                                    <div class="invalid-feedback">
+                                        Por favor ingrese el lugar de atención.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Atención médica -->
+                    <div class="form-section">
+                        <h4 class="form-section-title">Atención Médica</h4>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label required-field">¿El niño está siendo atendido por el sector salud?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="atencion_salud" id="atencion_si" value="si" required>
+                                    <label class="form-check-label" for="atencion_si">
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="atencion_salud" id="atencion_no" value="no">
+                                    <label class="form-check-label" for="atencion_no">
+                                        No
+                                    </label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Por favor seleccione una opción.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="frecuencia_atencion" class="form-label">Frecuencia</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                                    <select class="form-select" id="frecuencia_atencion">
+                                        <option value="" selected disabled>Seleccione...</option>
+                                        <option value="semanal">Semanal</option>
+                                        <option value="quincenal">Quincenal</option>
+                                        <option value="mensual">Mensual</option>
+                                        <option value="bimestral">Bimestral</option>
+                                        <option value="trimestral">Trimestral</option>
+                                        <option value="semestral">Semestral</option>
+                                        <option value="anual">Anual</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label required-field">¿Tiene diagnóstico médico?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tiene_diagnostico" id="diagnostico_si" value="si" required>
+                                    <label class="form-check-label" for="diagnostico_si">
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="tiene_diagnostico" id="diagnostico_no" value="no">
+                                    <label class="form-check-label" for="diagnostico_no">
+                                        No
+                                    </label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Por favor seleccione una opción.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cual_diagnostico" class="form-label">¿Cuál?</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-file-medical"></i></span>
+                                    <input type="text" class="form-control" id="cual_diagnostico" placeholder="Especifique el diagnóstico">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Terapias -->
+                    <div class="form-section">
+                        <h4 class="form-section-title">Terapias</h4>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label required-field">¿El niño está asistiendo a terapias?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="asiste_terapias" id="terapias_si" value="si" required>
+                                    <label class="form-check-label" for="terapias_si">
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="asiste_terapias" id="terapias_no" value="no">
+                                    <label class="form-check-label" for="terapias_no">
+                                        No
+                                    </label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Por favor seleccione una opción.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cual_terapia" class="form-label">¿Cuál?</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-activity"></i></span>
+                                    <select class="form-select" id="cual_terapia" multiple aria-label="Selección múltiple de terapias">
+                                        <option value="fisica">Fisioterapia</option>
+                                        <option value="lenguaje">Terapia de Lenguaje</option>
+                                        <option value="ocupacional">Terapia Ocupacional</option>
+                                        <option value="psicologica">Terapia Psicológica</option>
+                                        <option value="fonoaudiologia">Fonoaudiología</option>
+                                        <option value="otra">Otra</option>
+                                    </select>
+                                </div>
+                                <small class="form-text text-muted">Mantenga presionada la tecla Ctrl (Windows) o Command (Mac) para seleccionar múltiples opciones.</small>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="otra_terapia" class="form-label">Si seleccionó "Otra", especifique:</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-chat-dots"></i></span>
+                                    <input type="text" class="form-control" id="otra_terapia" placeholder="Describa la terapia">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="frecuencia_terapia" class="form-label">Frecuencia</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-calendar3"></i></span>
+                                    <select class="form-select" id="frecuencia_terapia">
+                                        <option value="" selected disabled>Seleccione...</option>
+                                        <option value="diaria">Diaria</option>
+                                        <option value="semanal">Semanal</option>
+                                        <option value="quincenal">Quincenal</option>
+                                        <option value="mensual">Mensual</option>
+                                        <option value="otro">Otro</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tratamiento médico -->
+                    <div class="form-section">
+                        <h4 class="form-section-title">Tratamiento Médico</h4>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label required-field">¿Actualmente recibe tratamiento médico por alguna enfermedad en particular?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="recibe_tratamiento" id="tratamiento_si" value="si" required>
+                                    <label class="form-check-label" for="tratamiento_si">
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="recibe_tratamiento" id="tratamiento_no" value="no">
+                                    <label class="form-check-label" for="tratamiento_no">
+                                        No
+                                    </label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Por favor seleccione una opción.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cual_tratamiento" class="form-label">¿Cuál?</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-bandaid"></i></span>
+                                    <input type="text" class="form-control" id="cual_tratamiento" placeholder="Especifique el tratamiento">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medicamentos -->
+                    <div class="form-section">
+                        <h4 class="form-section-title">Medicamentos</h4>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label required-field">¿Consume medicamentos?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="consume_medicamentos" id="medicamentos_si" value="si" required>
+                                    <label class="form-check-label" for="medicamentos_si">
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="consume_medicamentos" id="medicamentos_no" value="no">
+                                    <label class="form-check-label" for="medicamentos_no">
+                                        No
+                                    </label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Por favor seleccione una opción.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="nombre_medicamento" class="form-label">Nombre medicamento</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-capsule"></i></span>
+                                    <input type="text" class="form-control" id="nombre_medicamento" placeholder="Nombre del medicamento">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">¿Debe consumirlo en horario de clases?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="consume_horario_clases" id="horario_clases_si" value="si">
+                                    <label class="form-check-label" for="horario_clases_si">
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="consume_horario_clases" id="horario_clases_no" value="no">
+                                    <label class="form-check-label" for="horario_clases_no">
+                                        No
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="frecuencia_horario" class="form-label">Frecuencia y horario</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-clock"></i></span>
+                                    <input type="text" class="form-control" id="frecuencia_horario" placeholder="Ej: Cada 8 horas, 7am-3pm-11pm">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Productos de apoyo -->
+                    <div class="form-section">
+                        <h4 class="form-section-title">Productos de Apoyo</h4>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label required-field">¿Cuenta con productos de apoyo para favorecer su movilidad, comunicación e independencia?</label>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="productos_apoyo" id="productos_si" value="si" required>
+                                    <label class="form-check-label" for="productos_si">
+                                        Sí
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="productos_apoyo" id="productos_no" value="no">
+                                    <label class="form-check-label" for="productos_no">
+                                        No
+                                    </label>
+                                </div>
+                                <div class="invalid-feedback">
+                                    Por favor seleccione una opción.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="cuales_productos" class="form-label">¿Cuáles?</label>
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="bi bi-tools"></i></span>
+                                    <textarea class="form-control" id="cuales_productos" rows="3" placeholder="Describa los productos de apoyo que utiliza"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botones de acción -->
+                    <div class="row pt-3">
+                        <div class="col d-flex justify-content-center gap-3">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="bi bi-save me-2"></i>Guardar Información
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="bi bi-eraser me-2"></i>Limpiar Formulario
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-muted text-center">
+                La información médica proporcionada será tratada con estricta confidencialidad.
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Validación de formulario Bootstrap
+        (function() {
+            'use strict';
+            
+            const forms = document.querySelectorAll('.needs-validation');
+            
+            Array.from(forms).forEach(function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    } else {
+                        event.preventDefault();
+                        alert('Información de salud guardada correctamente');
+                        // Aquí podrías agregar código para enviar los datos a un servidor
+                    }
+                    
+                    form.classList.add('was-validated');
+                }, false);
+            });
+            
+            // Mostrar/ocultar campos dependientes
+            function toggleDependentFields() {
+                // Afiliación salud
+                const afiliacionRadios = document.querySelectorAll('input[name="afiliacion_salud"]');
+                const epsField = document.getElementById('eps');
+                const tipoAfiliacionRadios = document.querySelectorAll('input[name="tipo_afiliacion"]');
+                
+                afiliacionRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.value === 'si') {
+                            epsField.removeAttribute('disabled');
+                            tipoAfiliacionRadios.forEach(r => r.removeAttribute('disabled'));
+                        } else {
+                            epsField.setAttribute('disabled', '');
+                            epsField.value = '';
+                            tipoAfiliacionRadios.forEach(r => {
+                                r.setAttribute('disabled', '');
+                                r.checked = false;
+                            });
+                        }
+                    });
+                });
+                
+                // Atención salud
+                const atencionRadios = document.querySelectorAll('input[name="atencion_salud"]');
+                const frecuenciaAtencion = document.getElementById('frecuencia_atencion');
+                
+                atencionRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.value === 'si') {
+                            frecuenciaAtencion.removeAttribute('disabled');
+                        } else {
+                            frecuenciaAtencion.setAttribute('disabled', '');
+                            frecuenciaAtencion.selectedIndex = 0;
+                        }
+                    });
+                });
+                
+                // Diagnóstico
+                const diagnosticoRadios = document.querySelectorAll('input[name="tiene_diagnostico"]');
+                const cualDiagnostico = document.getElementById('cual_diagnostico');
+                
+                diagnosticoRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.value === 'si') {
+                            cualDiagnostico.removeAttribute('disabled');
+                        } else {
+                            cualDiagnostico.setAttribute('disabled', '');
+                            cualDiagnostico.value = '';
+                        }
+                    });
+                });
+                
+                // Terapias
+                const terapiasRadios = document.querySelectorAll('input[name="asiste_terapias"]');
+                const cualTerapia = document.getElementById('cual_terapia');
+                const otraTerapia = document.getElementById('otra_terapia');
+                const frecuenciaTerapia = document.getElementById('frecuencia_terapia');
+                
+                terapiasRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.value === 'si') {
+                            cualTerapia.removeAttribute('disabled');
+                            frecuenciaTerapia.removeAttribute('disabled');
+                        } else {
+                            cualTerapia.setAttribute('disabled', '');
+                            otraTerapia.setAttribute('disabled', '');
+                            frecuenciaTerapia.setAttribute('disabled', '');
+                            cualTerapia.selectedIndex = -1;
+                            otraTerapia.value = '';
+                            frecuenciaTerapia.selectedIndex = 0;
+                        }
+                    });
+                });
+                
+                // Detectar si se selecciona "Otra" terapia
+                cualTerapia.addEventListener('change', function() {
+                    const options = Array.from(this.selectedOptions);
+                    if (options.some(option => option.value === 'otra')) {
+                        otraTerapia.removeAttribute('disabled');
+                    } else {
+                        otraTerapia.setAttribute('disabled', '');
+                        otraTerapia.value = '';
+                    }
+                });
+                
+                // Tratamiento
+                const tratamientoRadios = document.querySelectorAll('input[name="recibe_tratamiento"]');
+                const cualTratamiento = document.getElementById('cual_tratamiento');
+                
+                tratamientoRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.value === 'si') {
+                            cualTratamiento.removeAttribute('disabled');
+                        } else {
+                            cualTratamiento.setAttribute('disabled', '');
+                            cualTratamiento.value = '';
+                        }
+                    });
+                });
+                
+                // Medicamentos
+                const medicamentosRadios = document.querySelectorAll('input[name="consume_medicamentos"]');
+                const nombreMedicamento = document.getElementById('nombre_medicamento');
+                const horarioClasesRadios = document.querySelectorAll('input[name="consume_horario_clases"]');
+                const frecuenciaHorario = document.getElementById('frecuencia_horario');
+                
+                medicamentosRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.value === 'si') {
+                            nombreMedicamento.removeAttribute('disabled');
+                            horarioClasesRadios.forEach(r => r.removeAttribute('disabled'));
+                        } else {
+                            nombreMedicamento.setAttribute('disabled', '');
+                            horarioClasesRadios.forEach(r => {
+                                r.setAttribute('disabled', '');
+                                r.checked = false;
+                            });
+                            frecuenciaHorario.setAttribute('disabled', '');
+                            nombreMedicamento.value = '';
+                            frecuenciaHorario.value = '';
+                        }
+                    });
+                });
+                
+                // Horario clases
+                horarioClasesRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.value === 'si') {
+                            frecuenciaHorario.removeAttribute('disabled');
+                        } else {
+                            frecuenciaHorario.setAttribute('disabled', '');
+                            frecuenciaHorario.value = '';
+                        }
+                    });
+                });
+                
+                // Productos de apoyo
+                const productosRadios = document.querySelectorAll('input[name="productos_apoyo"]');
+                const cualesProductos = document.getElementById('cuales_productos');
+                
+                productosRadios.forEach(radio => {
+                    radio.addEventListener('change', function() {
+                        if (this.value === 'si') {
+                            cualesProductos.removeAttribute('disabled');
+                        } else {
+                            cualesProductos.setAttribute('disabled', '');
+                            cualesProductos.value = '';
+                        }
+                    });
+                });
+            }
+            
+            // Inicializar controles de dependencia
+            document.addEventListener('DOMContentLoaded', toggleDependentFields);
+        })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario PIAR</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .form-label {
+            font-weight: bold;
+        }
+        .form-check-label {
+            margin-right: 15px;
+        }
+        .card {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .card-header {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+  <div class=" bg-primary">
+    <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">PIAR</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+          aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="salud.html">Entorno Salud</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="hogar.html">Entorno Hogar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="educativo.html">Entorno Educativo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="estudiantes.html">Estudiantes</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="ajuste.html">Ajustes Razonables</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="acuerdo.html">Acta de Acuerdo</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="caracteristicas_estudiante.html">Caracteristicas estudiante</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="planmejoramiento.html">plan </a>
+            </li>
+          </ul>
+          <span class="navbar-text">
+            Inclusion
+          </span>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+    <div class="container py-4">
+        <div class="card">
+            <div class="card-header text-center">
+                <h2>Formulario PIAR</h2>
+                <p class="text-muted mb-0">Plan Individual de Ajustes Razonables</p>
+            </div>
+            <div class="card-body">
+                <form id="formPIAR">
+                    <div class="mb-3">
+                        <label for="id_piar" class="form-label">ID PIAR:</label>
+                        <input type="text" class="form-control" id="id_piar" name="id_piar" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="compromisos" class="form-label">Compromisos específicos para implementar en el aula:</label>
+                        <textarea class="form-control" id="compromisos" name="compromisos" rows="4" placeholder="Incluya aquí los compromisos específicos para implementar en el aula que requieran ampliación o detalle adicional al incluido en el PIAR" required></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="nombre_actividad" class="form-label">Nombre de la Actividad:</label>
+                        <input type="text" class="form-control" id="nombre_actividad" name="nombre_actividad" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="descripcion_estrategia" class="form-label">Descripción de la estrategia:</label>
+                        <textarea class="form-control" id="descripcion_estrategia" name="descripcion_estrategia" rows="3" required></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label d-block">Frecuencia:</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="frecuencia" id="frecuencia_diaria" value="D">
+                            <label class="form-check-label" for="frecuencia_diaria">D - Diaria</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="frecuencia" id="frecuencia_semanal" value="S" checked>
+                            <label class="form-check-label" for="frecuencia_semanal">S - Semanal</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="frecuencia" id="frecuencia_permanente" value="P">
+                            <label class="form-check-label" for="frecuencia_permanente">P - Permanente</label>
+                        </div>
+                    </div>
+                    
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                        <button type="reset" class="btn btn-secondary me-md-2">Limpiar</button>
+                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('formPIAR').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Formulario enviado con éxito');
+            // Aquí puedes agregar código para procesar el formulario
+        });
+    </script>
+</body>
+</html>

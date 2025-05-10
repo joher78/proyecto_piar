@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario PIAR - Ajustes Razonables</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .header-section {
+            background-color: #f8f9fa;
+            border-left: 4px solid #0d6efd;
+            padding: 10px 15px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+
+<div class=" bg-primary">
+  <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">PIAR</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="salud.html">Entorno Salud</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="hogar.html">Entorno Hogar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="educativo.html">Entorno Educativo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="estudiantes.html">Estudiantes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="ajuste.html">Ajustes Razonables</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="acuerdo.html">Acta de Acuerdo</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="caracteristicas_estudiante.html">Caracteristicas estudiante</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          Inclusion
+        </span>
+      </div>
+    </div>
+  </nav>
+</div>
+
+
+<body>
+    <div class="container mt-4 mb-5">
+        <h2 class="text-center mb-4">Formulario PIAR - Ajustes Razonables por Materia</h2>
+        
+        <form class="needs-validation" novalidate>
+            <!-- Información básica -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Información General</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="id_piar" class="form-label fw-bold">ID PIAR</label>
+                            <input type="text" class="form-control" id="id_piar" required>
+                            <div class="invalid-feedback">
+                                Por favor ingrese el ID PIAR.
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-8 mb-3">
+                            <label for="educador" class="form-label fw-bold">Educador</label>
+                            <input type="text" class="form-control" id="educador" required placeholder="Nombre completo del educador">
+                            <div class="invalid-feedback">
+                                Por favor ingrese el nombre del educador.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="materia" class="form-label fw-bold">Materia</label>
+                            <select class="form-select" id="materia" required>
+                                <option value="" selected disabled>Seleccione una materia</option>
+                                <option value="matematicas">Matemáticas</option>
+                                <option value="lenguaje">Lenguaje</option>
+                                <option value="ciencias_naturales">Ciencias Naturales</option>
+                                <option value="ciencias_sociales">Ciencias Sociales</option>
+                                <option value="ingles">Inglés</option>
+                                <option value="educacion_fisica">Educación Física</option>
+                                <option value="artes">Artes</option>
+                                <option value="tecnologia">Tecnología e Informática</option>
+                                <option value="etica">Ética y Valores</option>
+                                <option value="religion">Religión</option>
+                                <option value="otra">Otra</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Por favor seleccione una materia.
+                            </div>
+                            <div class="mt-2 collapse" id="otra_materia_div">
+                                <input type="text" class="form-control" id="otra_materia" placeholder="Especifique la materia">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-3">
+                            <label for="trimestre" class="form-label fw-bold">Trimestre/Periodo</label>
+                            <select class="form-select" id="trimestre" required>
+                                <option value="" selected disabled>Seleccione un periodo</option>
+                                <option value="periodo1">Primer Periodo</option>
+                                <option value="periodo2">Segundo Periodo</option>
+                                <option value="periodo3">Tercer Periodo</option>
+                                <option value="periodo4">Cuarto Periodo</option>
+                                <option value="trimestre1">Primer Trimestre</option>
+                                <option value="trimestre2">Segundo Trimestre</option>
+                                <option value="trimestre3">Tercer Trimestre</option>
+                                <option value="semestre1">Primer Semestre</option>
+                                <option value="semestre2">Segundo Semestre</option>
+                                <option value="anual">Anual</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                Por favor seleccione un trimestre/periodo.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Objetivos -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Objetivos de Aprendizaje</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header-section">
+                                <p class="mb-0">Descripción de los objetivos de aprendizaje planeados para el periodo académico y la asignatura.</p>
+                            </div>
+                            <textarea class="form-control" id="objetivos" rows="4" required placeholder="Detalle los objetivos de aprendizaje específicos para esta materia y periodo"></textarea>
+                            <div class="invalid-feedback">
+                                Por favor complete los objetivos de aprendizaje.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Barreras Identificadas -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Barreras Identificadas</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header-section">
+                                <p class="mb-0">Describa las barreras que dificultan el proceso de aprendizaje del estudiante en esta asignatura específica.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="barrera_acceso">
+                                <label class="form-check-label" for="barrera_acceso">
+                                    Barreras de acceso al aprendizaje
+                                </label>
+                            </div>
+                            <textarea class="form-control mt-2" id="detalle_barrera_acceso" rows="3" placeholder="Detalle las barreras de acceso"></textarea>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="barrera_participacion">
+                                <label class="form-check-label" for="barrera_participacion">
+                                    Barreras de participación
+                                </label>
+                            </div>
+                            <textarea class="form-control mt-2" id="detalle_barrera_participacion" rows="3" placeholder="Detalle las barreras de participación"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="barrera_comunicacion">
+                                <label class="form-check-label" for="barrera_comunicacion">
+                                    Barreras de comunicación
+                                </label>
+                            </div>
+                            <textarea class="form-control mt-2" id="detalle_barrera_comunicacion" rows="3" placeholder="Detalle las barreras de comunicación"></textarea>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="barrera_otras">
+                                <label class="form-check-label" for="barrera_otras">
+                                    Otras barreras
+                                </label>
+                            </div>
+                            <textarea class="form-control mt-2" id="detalle_barrera_otras" rows="3" placeholder="Detalle otras barreras"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ajustes Razonables -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Ajustes Razonables</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header-section">
+                                <p class="mb-0">Describa los ajustes razonables que se implementarán para superar las barreras identificadas y lograr los objetivos de aprendizaje.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Ajustes en la Metodología</label>
+                            <textarea class="form-control" id="ajuste_metodologia" rows="3" placeholder="Describa los ajustes en la metodología de enseñanza"></textarea>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Ajustes en los Recursos</label>
+                            <textarea class="form-control" id="ajuste_recursos" rows="3" placeholder="Describa los ajustes en los recursos educativos"></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Ajustes en las Actividades</label>
+                            <textarea class="form-control" id="ajuste_actividades" rows="3" placeholder="Describa los ajustes en las actividades de clase"></textarea>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Otros Ajustes</label>
+                            <textarea class="form-control" id="ajuste_otros" rows="3" placeholder="Describa otros ajustes razonables necesarios"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Evaluación -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Evaluación</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="header-section">
+                                <p class="mb-0">Especifique los ajustes en la evaluación y el método de seguimiento del proceso de aprendizaje.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <label class="form-label fw-bold">Ajustes en los Criterios de Evaluación</label>
+                            <textarea class="form-control" id="evaluacion_criterios" rows="3" placeholder="Describa los ajustes en los criterios de evaluación" required></textarea>
+                            <div class="invalid-feedback">
+                                Por favor complete los ajustes en los criterios de evaluación.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Instrumentos de Evaluación</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="eval_oral">
+                                <label class="form-check-label" for="eval_oral">Evaluación oral</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="eval_escrita">
+                                <label class="form-check-label" for="eval_escrita">Evaluación escrita (adaptada)</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="eval_practica">
+                                <label class="form-check-label" for="eval_practica">Evaluación práctica</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="eval_proyecto">
+                                <label class="form-check-label" for="eval_proyecto">Proyecto</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="eval_portfolio">
+                                <label class="form-check-label" for="eval_portfolio">Portafolio</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="eval_otro">
+                                <label class="form-check-label" for="eval_otro">Otro</label>
+                            </div>
+                            <div class="mt-2 collapse" id="otro_eval_div">
+                                <input type="text" class="form-control" id="otro_eval" placeholder="Especifique otro instrumento">
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label class="form-label fw-bold">Método de Seguimiento</label>
+                            <textarea class="form-control" id="evaluacion_seguimiento" rows="5" placeholder="Describa el método de seguimiento del proceso de aprendizaje"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Observaciones adicionales -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Observaciones Adicionales</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12">
+                            <textarea class="form-control" id="observaciones" rows="3" placeholder="Agregue cualquier observación adicional relevante"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botones del formulario -->
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary btn-lg px-5 me-3" type="submit">Guardar Información</button>
+                    <button class="btn btn-outline-secondary btn-lg px-5" type="reset">Limpiar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Script para validación de formulario
+        (function () {
+            'use strict'
+            
+            // Obtener todos los formularios a los que queremos aplicar estilos de validación personalizados
+            var forms = document.querySelectorAll('.needs-validation')
+            
+            // Bucle para evitar el envío y aplicar validación
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        } else {
+                            // Si el formulario es válido, podría guardarse la información aquí
+                            event.preventDefault()
+                            alert('Información guardada correctamente')
+                        }
+                        
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+        
+        // Funcionalidad para los campos de detalle de barreras
+        function toggleTextarea(checkboxId, textareaId) {
+            const checkbox = document.getElementById(checkboxId);
+            const textarea = document.getElementById(textareaId);
+            
+            checkbox.addEventListener('change', function() {
+                textarea.disabled = !this.checked;
+                if (!this.checked) {
+                    textarea.value = '';
+                }
+            });
+            
+            // Estado inicial
+            textarea.disabled = !checkbox.checked;
+        }
+        
+        // Aplicar la funcionalidad a cada par checkbox-textarea
+        toggleTextarea('barrera_acceso', 'detalle_barrera_acceso');
+        toggleTextarea('barrera_participacion', 'detalle_barrera_participacion');
+        toggleTextarea('barrera_comunicacion', 'detalle_barrera_comunicacion');
+        toggleTextarea('barrera_otras', 'detalle_barrera_otras');
+        
+        // Mostrar campo para otra materia
+        document.getElementById('materia').addEventListener('change', function() {
+            const otraMateria = document.getElementById('otra_materia_div');
+            if (this.value === 'otra') {
+                otraMateria.classList.add('show');
+                document.getElementById('otra_materia').required = true;
+            } else {
+                otraMateria.classList.remove('show');
+                document.getElementById('otra_materia').required = false;
+                document.getElementById('otra_materia').value = '';
+            }
+        });
+        
+        // Mostrar campo para otro instrumento de evaluación
+        document.getElementById('eval_otro').addEventListener('change', function() {
+            const otroEval = document.getElementById('otro_eval_div');
+            if (this.checked) {
+                otroEval.classList.add('show');
+                document.getElementById('otro_eval').required = true;
+            } else {
+                otroEval.classList.remove('show');
+                document.getElementById('otro_eval').required = false;
+                document.getElementById('otro_eval').value = '';
+            }
+        });
+    </script>
+</body>
+</html>

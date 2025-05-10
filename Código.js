@@ -13,21 +13,22 @@ function doGet(e) {
 //Create Navigation Bar
 function getNavbar(activePage) {
   var scriptURLHome = getScriptURL();
-  var scriptURLPage1 = getScriptURL("mode=estudiante/Estudiantes");
+  var scriptURLPiar = getScriptURL("mode=piar/piar");
+ var scriptURLPage1 = getScriptURL("mode=estudiante/Estudiantes");
   var scriptURLPage2 = getScriptURL("mode=Profesor");
   var scriptURLPage3 = getScriptURL("mode=Page3");
 
   var navbar = 
     `<nav class="navbar navbar-expand-md navbar-dark bg-dark" data-bs-theme="dark">
          <div class="container-fluid">
-        <a class="navbar-brand" href="${scriptURLHome}">PIAR</a>
+        <a class="navbar-brand" href="${scriptURLHome}">Home</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-item nav-link ${activePage === 'Index' ? 'active' : ''}" href="${scriptURLHome}">Home</a>
+            <a class="nav-item nav-link ${activePage === 'piar/piar' ? 'active' : ''}" href="${scriptURLPiar}">Piar</a>
              </li>
             <li class="nav-item">
             <a class="nav-item nav-link ${activePage === 'estudiante/Estudiantes' ? 'active' : ''}" href="${scriptURLPage1}">Estudiantes</a>

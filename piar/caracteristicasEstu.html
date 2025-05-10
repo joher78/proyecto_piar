@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario PIAR - Aspectos Pedagógicos</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class=" bg-primary">
+        <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">PIAR</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+              aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="salud.html">Entorno Salud</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="hogar.html">Entorno Hogar</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="educativo.html">Entorno Educativo</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="estudiantes.html">Estudiantes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="ajuste.html">Ajustes Razonables</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="acuerdo.html">Acta de Acuerdo</a>
+                </li>
+    
+                <li class="nav-item">
+                  <a class="nav-link" href="caracteristicas_estudiante.html">Caracteristicas estudiante</a>
+                </li>
+              </ul>
+              <span class="navbar-text">
+                Inclusion
+              </span>
+            </div>
+          </div>
+        </nav>
+      </div>
+    <div class="container mt-4 mb-5">
+        <h2 class="text-center mb-4">Formulario PIAR - Aspectos Pedagógicos</h2>
+        
+        <form class="needs-validation" novalidate>
+            <!-- ID PIAR -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="id_piar" class="form-label fw-bold">ID PIAR</label>
+                    <input type="text" class="form-control" id="id_piar" required>
+                    <div class="invalid-feedback">
+                        Por favor ingrese el ID PIAR.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Separador -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="bg-light p-3 rounded">
+                        <h4 class="mb-0">Intereses y Expectativas</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Gustos e intereses / Aspectos que le desagradan -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="gustos_intereses" class="form-label">Gustos e Intereses</label>
+                    <textarea class="form-control" id="gustos_intereses" rows="4" required placeholder="Detalle los gustos e intereses del estudiante"></textarea>
+                    <div class="invalid-feedback">
+                        Por favor complete este campo.
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="aspectos_desagradan" class="form-label">Aspectos que le Desagradan</label>
+                    <textarea class="form-control" id="aspectos_desagradan" rows="4" required placeholder="Detalle los aspectos que le desagradan al estudiante"></textarea>
+                    <div class="invalid-feedback">
+                        Por favor complete este campo.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Expectativas del estudiante y la familia -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <label for="expectativas" class="form-label">Expectativas del Estudiante y la Familia</label>
+                    <textarea class="form-control" id="expectativas" rows="4" required placeholder="Describa las expectativas que tienen el estudiante y su familia respecto al proceso educativo"></textarea>
+                    <div class="invalid-feedback">
+                        Por favor complete este campo.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Separador -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="bg-light p-3 rounded">
+                        <h4 class="mb-0">Evaluación Pedagógica</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Descripción de lo que hace, puede hacer o requiere apoyo -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <label for="descripcion_capacidades" class="form-label">Describa en términos lo que hace, puede hacer o requiere apoyo el estudiante para favorecer su proceso educativo</label>
+                    <textarea class="form-control" id="descripcion_capacidades" rows="6" required placeholder="Detalle las capacidades y necesidades de apoyo del estudiante en su proceso educativo"></textarea>
+                    <div class="invalid-feedback">
+                        Por favor complete este campo.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Habilidades, competencias, cualidades y aprendizajes -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <label for="habilidades_competencias" class="form-label">Indique habilidades, competencias, cualidades, aprendizajes con las que cuenta el estudiante para el grado en el que fue matriculado</label>
+                    <textarea class="form-control" id="habilidades_competencias" rows="6" required placeholder="Detalle las habilidades, competencias, cualidades y aprendizajes del estudiante"></textarea>
+                    <div class="invalid-feedback">
+                        Por favor complete este campo.
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Áreas de fortaleza y áreas que requieren apoyo -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label for="areas_fortaleza" class="form-label">Áreas de Fortaleza</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="matematicas_fortaleza">
+                        <label class="form-check-label" for="matematicas_fortaleza">Matemáticas</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="lenguaje_fortaleza">
+                        <label class="form-check-label" for="lenguaje_fortaleza">Lenguaje</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="ciencias_fortaleza">
+                        <label class="form-check-label" for="ciencias_fortaleza">Ciencias Naturales</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sociales_fortaleza">
+                        <label class="form-check-label" for="sociales_fortaleza">Ciencias Sociales</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="artes_fortaleza">
+                        <label class="form-check-label" for="artes_fortaleza">Artes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="deportes_fortaleza">
+                        <label class="form-check-label" for="deportes_fortaleza">Educación Física</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="otro_fortaleza">
+                        <label class="form-check-label" for="otro_fortaleza">Otro</label>
+                        <input type="text" class="form-control mt-1" id="otro_fortaleza_texto" placeholder="Especifique">
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <label for="areas_apoyo" class="form-label">Áreas que Requieren Apoyo</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="matematicas_apoyo">
+                        <label class="form-check-label" for="matematicas_apoyo">Matemáticas</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="lenguaje_apoyo">
+                        <label class="form-check-label" for="lenguaje_apoyo">Lenguaje</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="ciencias_apoyo">
+                        <label class="form-check-label" for="ciencias_apoyo">Ciencias Naturales</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="sociales_apoyo">
+                        <label class="form-check-label" for="sociales_apoyo">Ciencias Sociales</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="artes_apoyo">
+                        <label class="form-check-label" for="artes_apoyo">Artes</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="deportes_apoyo">
+                        <label class="form-check-label" for="deportes_apoyo">Educación Física</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="otro_apoyo">
+                        <label class="form-check-label" for="otro_apoyo">Otro</label>
+                        <input type="text" class="form-control mt-1" id="otro_apoyo_texto" placeholder="Especifique">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Observaciones adicionales -->
+            <div class="row mb-4">
+                <div class="col-12">
+                    <label for="observaciones" class="form-label">Observaciones Adicionales</label>
+                    <textarea class="form-control" id="observaciones" rows="3" placeholder="Agregue cualquier observación adicional relevante"></textarea>
+                </div>
+            </div>
+            
+            <!-- Botones del formulario -->
+            <div class="row mt-4">
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary btn-lg px-5 me-3" type="submit">Guardar Información</button>
+                    <button class="btn btn-outline-secondary btn-lg px-5" type="reset">Limpiar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Script para validación de formulario
+        (function () {
+            'use strict'
+            
+            // Obtener todos los formularios a los que queremos aplicar estilos de validación personalizados
+            var forms = document.querySelectorAll('.needs-validation')
+            
+            // Bucle para evitar el envío y aplicar validación
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault()
+                            event.stopPropagation()
+                        } else {
+                            // Si el formulario es válido, podría guardarse la información aquí
+                            event.preventDefault()
+                            alert('Información guardada correctamente')
+                        }
+                        
+                        form.classList.add('was-validated')
+                    }, false)
+                })
+        })()
+        
+        // Funcionalidad para campos "Otro"
+        document.getElementById('otro_fortaleza').addEventListener('change', function() {
+            document.getElementById('otro_fortaleza_texto').disabled = !this.checked;
+            if (!this.checked) {
+                document.getElementById('otro_fortaleza_texto').value = '';
+            }
+        });
+        
+        document.getElementById('otro_apoyo').addEventListener('change', function() {
+            document.getElementById('otro_apoyo_texto').disabled = !this.checked;
+            if (!this.checked) {
+                document.getElementById('otro_apoyo_texto').value = '';
+            }
+        });
+        
+        // Estado inicial de los campos "Otro"
+        document.getElementById('otro_fortaleza_texto').disabled = !document.getElementById('otro_fortaleza').checked;
+        document.getElementById('otro_apoyo_texto').disabled = !document.getElementById('otro_apoyo').checked;
+    </script>
+</body>
+</html>
