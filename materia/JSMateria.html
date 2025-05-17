@@ -1,0 +1,119 @@
+<script>
+
+  const list_materias = document.getElementById('lista-materias');
+  const nuevo_materia = document.getElementById('nuevo-materia');
+
+  const materias = document.getElementById('materias');
+  const form_materia = document.getElementById('form-materia');
+
+ list_materias.addEventListener('click', () => {
+    console.log('mostrar listado');
+   cambioVista1();
+  });
+
+  nuevo_materia.addEventListener('click', () => {
+    console.log('nueva materia' );
+    cambioVista();
+  
+  });
+
+function cambioVista(){
+  materias.classList.add('d-none');
+  form_materia.classList.remove('d-none');
+  form_materia.classList.add('d-block');
+}
+
+function cambioVista1(){
+  materias.classList.remove('d-none');
+   materias.classList.add('d-block');
+  form_materia.classList.remove('d-block');
+  form_materia.classList.add('d-none');
+}
+
+function validarFormulario (){
+ const form = document.getElementById('materiaForm');
+
+const id = form.idMateria.value;
+
+if(id === ''){
+console.log('crear', id);
+google.script.run
+ .agregarMateria(form);
+}else{
+console.log('editar', id);
+google.script.run
+ .editarMateria(form);
+}
+console.log('id', id)
+ 
+
+ 
+console.log('Frmulario Materia')
+
+}
+
+window.addEventListener("load", getMaterias);
+
+  function getMaterias() {
+
+    google.script.run
+      .withSuccessHandler(est => {
+        console.log("muestra datos")
+        let tableBody = document.getElementById('tableBody-materias');
+        var templete = document.getElementById('rowTemplete');
+        var temmpleteContent = templete.content;
+        console.log(est);
+        est.forEach(x => {
+          const tr = temmpleteContent.cloneNode(true);
+          const nombre = tr.querySelector(".template-nombre")
+          const area = tr.querySelector(".template-area")
+          const descripcion = tr.querySelector(".template-descripcion")
+          const estado = tr.querySelector(".template-estado")
+          
+         
+          const editar = tr.querySelector(".editar")
+          const borrar = tr.querySelector(".borrar")
+
+
+
+          
+          nombre.textContent = x[1];
+          area.textContent = x[2];
+          descripcion.textContent = x[3];
+          estado.textContent = x[4];
+        
+          
+          editar.dataset.materiaId = x[0];
+          borrar.dataset.materiaId = x[0];
+
+          tableBody.appendChild(tr);
+
+
+        })
+
+
+      })
+      .leerMaterias()
+  }
+
+function editarMateria(button){
+
+  const tableRow = button.parentNode.parentNode;
+ 
+  const id = button.dataset.materiaId;
+  const nombre = tableRow.cells[0].innerHTML;
+  const area = tableRow.cells[1].innerHTML;
+  const descripcion = tableRow.cells[2].innerHTML;
+  const estado = tableRow.cells[3].innerHTML;
+
+document.getElementById('idMateria').value = id;
+document.getElementById('materia').value = nombre;
+document.getElementById('area').value = area;
+document.getElementById('descripcion').value = descripcion;
+document.getElementById('estado').value = estado;
+
+}
+  
+  
+</script>
+

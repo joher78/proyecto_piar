@@ -1,0 +1,132 @@
+<html>
+
+<head>
+  <base target="_top">
+
+  <?!= include('CSS'); ?>
+</head>
+
+<body>
+
+  <div id="nav-admin">
+
+    <nav class="navbar navbar-expand-md navbar-info bg-info" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="<?=getScriptURL(); ?>?mode=Index">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-links">
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=piar/Piar">Piar</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=estudiante/Estudiantes">Estudiante</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=profesor/Profesor">Profesor</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=colegio/Colegio">Colegio</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div id="sidebar" class=" col-3 bg-danger maxVH d-none d-sm-block">
+        <div class="offcanvas-header float-end d-sm-none">
+          <button type="button" class="btn-close" id="close"></button>
+        </div>
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start">
+          <li class="list-group-item mt-3 "><a class="nav-link text-truncate" id="estudiantes">Estudiantes</a></li>
+          <li class="list-group-item mt-3"><a class="nav-link text-truncate" id="nuevo">Nuevo Estudiante</a></li>
+          <li class="list-group-item mt-3 "><a class="nav-link text-truncate" id="generalInfo">Información General</a>
+          </li>
+          <li class="list-group-item mt-3"><a class="nav-link text-truncate" id="padres">Padres</a></li>
+        </ul>
+      </div>
+
+      <div id="estudiante-content" class="container bg-light col-9">
+
+        <div class="container form-container p-2">
+          <div class="card m-3">
+            <div class="card-header">
+              <h3 class="text-center mb-0">Información Colegio</h3>
+            </div>
+            <div class="card-body">
+              <form id="formularioInstitucion">
+                <div class="mb-3 " hidden>
+                  <label for="id" class="form-label">ID</label>
+                  <input type="text" class="form-control" id="id" name="id" required>
+                </div>
+                <div class="row">
+                  <div class="mb-3 col-12 col-sm-6 col-md-8">
+                    <label for="nombreInstitucion" class="form-label">Nombre de la Institución Educativa</label>
+                    <input type="text" class="form-control" id="nombreInstitucion" name="nombreInstitucion" required>
+                  </div>
+
+                  <div class="mb-3 col-12 col-sm-6 col-md-4">
+                    <label for="sede" class="form-label">Sede</label>
+                    <input type="text" class="form-control" id="sede" name="sede" required>
+                  </div>
+
+                  <div class="mb-3 col-12 col-sm-6 col-md-4">
+                    <label for="direccion" class="form-label">Dirección</label>
+                    <input type="text" class="form-control" id="direccion" name="direccion" required>
+                  </div>
+
+                  <div class="mb-3 col-12 col-sm-6 col-md-4">
+                    <label for="correo" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="correo" name="correo" required>
+                  </div>
+
+                  <div class="mb-3 col-12 col-sm-6 col-md-4">
+                    <label for="estado" class="form-label">Estado</label>
+                    <select class="form-select" id="estado" name="estado" required>
+                                    <option value="" selected disabled>Seleccionar estado</option>
+                                    <option value="activo">Activo</option>
+                                    <option value="inactivo">Inactivo</option>
+                                    <option value="en_revision">En revisión</option>
+                                </select>
+                  </div>
+
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button type="reset" class="btn btn-secondary me-md-2">Limpiar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <?!= include('JavaScript'); ?>
+  <?!= include('colegio/JSColegio'); ?>
+
+</body>
+
+
+</html>

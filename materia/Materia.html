@@ -1,0 +1,162 @@
+<html>
+
+<head>
+  <base target="_top">
+
+  <?!= include('CSS'); ?>
+</head>
+
+<body>
+
+  <div id="nav-admin">
+
+    <nav class="navbar navbar-expand-md navbar-info bg-info" data-bs-theme="dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="<?=getScriptURL(); ?>?mode=Index">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-links">
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=piar/Piar">Piar</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=estudiante/Estudiantes">Estudiante</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=profesor/Profesor">Profesor</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=colegio/Colegio">Colegio</a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div id="sidebar" class=" col-3 bg-danger maxVH d-none d-sm-block">
+        <div class="offcanvas-header float-end d-sm-none">
+          <button type="button" class="btn-close" id="close"></button>
+        </div>
+        <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start">
+          <li class="list-group-item mt-3 "><a class="nav-link text-truncate" id="lista-materias">Materias</a></li>
+          <li class="list-group-item mt-3"><a class="nav-link text-truncate" id="nuevo-materia">Nueva Materia</a></li>
+        </ul>
+      </div>
+
+      
+
+      <div id="list-materia" class="container bg-light col-9 ">
+<div class="card m-2 p-2 " id="materias">
+         <div class="table-responsive">
+          <h3 class="text-center mb-0">Información Materias</h3>
+            <table class="table table-bordered" style="width: 99%;"  id="tabla-materias">
+              <thead class="table-success">
+                <tr>
+                  <th>Nombre</th>
+                  <th>Area</th>
+                  <th>Descripción</th>
+                  <th>Estado</th>
+                  <th>acciones</th>
+
+                </tr>
+              </thead>
+              <tbody id="tableBody-materias">
+                <template id="rowTemplete">
+                  <tr>
+                    <td class="template-nombre"> </td>
+                    <td class="template-area"> </td>
+                    <td class="template-descripcion"> </td>
+                    <td class="template-estado"> </td>
+                    <td class="template-acciones text-center">
+                      <i class="bi bi-pencil-square editar me-3" role="button" onclick="editarMateria(this)"></i>
+                      <i class="bi bi-trash borrar me-3" role="button" onclick="borrarMateria(this)"></i>
+                    </td>
+                  </tr>
+                </template>
+
+              </tbody>
+            </table>
+          </div>
+</div>
+        <div id="form-materia" class="container form-container p-2 d-none">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="text-center mb-0">Información Materias</h3>
+            </div>
+            <div class="card-body">
+              <form id="materiaForm" name="materiaForm">
+                <div class="mb-3" hidden>
+                  <label for="idMateria" class="form-label">ID:</label>
+                  <input type="text" class="form-control" id="idMateria" name="idMateria" placeholder="Ingrese el ID" required>
+
+                </div>
+
+                <div class="row">
+
+                  <div class="mb-3 col-12 col-sm-6 col-md-4">
+                    <label for="materia" class="form-label">Materia:</label>
+                    <input type="text" class="form-control" id="materia" name="materia" placeholder="Ingrese la materia" required>
+
+                  </div>
+                  <div class="mb-3 col-12 col-sm-6 col-md-4">
+                    <label for="area" class="form-label">Área:</label>
+                    <input type="text" class="form-control" id="area" name="area" placeholder="Ingrese el área" required>
+
+                  </div>
+                  <div class="mb-3 col-12 col-sm-6 col-md-4">
+                    <label for="descripcion" class="form-label">Descripción:</label>
+                    <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Ingrese la descripción" required></input>
+
+                  </div>
+                  <div class="mb-3 col-12 col-sm-6 col-md-4">
+                    <label for="estado" class="form-label">Estado:</label>
+                    <select class="form-select" id="estado" name="estado" required>
+                    <option value="" disabled selected>Seleccione el estado</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                    <option value="Pendiente">Pendiente</option>
+                </select>
+
+                  </div>
+                  <div style="grid-template-columns: 1fr 1fr;" class="d-grid gap-3">
+                  <button type="button" class="btn btn-primary " onclick="validarFormulario()">Guardar Datos</button>
+                 
+                  <button type="reset" class="btn btn-secondary ">Limpiar Formulario</button>
+                   </div>
+                </div>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <?!= include('JavaScript'); ?>
+  <?!= include('materia/JSMateria'); ?>
+
+</body>
+
+
+</html>

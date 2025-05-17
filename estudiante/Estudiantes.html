@@ -8,11 +8,42 @@
 </head>
 
 <body>
-  {{NAVBAR}}
+   <div id="nav-admin">
+
+ <nav class="navbar navbar-expand-md navbar-info bg-info" data-bs-theme="dark">
+         <div class="container-fluid">
+        <a class="navbar-brand"href="<?=getScriptURL(); ?>?mode=Index">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-links">
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=piar/Piar">Piar</a>
+            </li>
+
+             <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=estudiante/Estudiantes">Estudiante</a>
+            </li>
+
+             <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=profesor/Profesor">Profesor</a>
+            </li>
+
+             <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=colegio/Colegio">Colegio</a>
+            </li>
+         
+           </ul>
+        </div>
+        </div>
+      </nav>
+   </div>
   <div class="container-fluid">
     <div class="row">
 
-      <div id="sidebar" class=" col-2 bg-danger maxVH d-none d-sm-block">
+      <div id="sidebar" class=" col-3 bg-danger maxVH d-none d-sm-block">
         <div class="offcanvas-header float-end d-sm-none">
           <button type="button" class="btn-close" id="close"></button>
         </div>
@@ -25,7 +56,7 @@
         </ul>
       </div>
 
-      <div id="estudiante-content" class="container bg-light col-10">
+      <div id="estudiante-content" class="container bg-light col-9">
 
         <button class="btn float-start d-sm-none" id="aparece">
           <span>-></span>

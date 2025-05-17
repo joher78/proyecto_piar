@@ -1,96 +1,45 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario de Información del Estudiante</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .form-label {
-            font-weight: bold;
-        
-        }
-        .card {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-bottom: 2px;
-        }
-        .card-header {
-            background-color: #f0f7ff;
-            font-weight: bold;
-        }
-        .section-title {
-            border-bottom: 2px solid #dee2e6;
-            padding-bottom: 8px;
-            margin-bottom: 20px;
-            color: #0d6efd;
-        }
-        body {
-            background-color: #f8f9fa;
-        }
-        .container {
-            background-color: white;
-            border-radius: 10px;
-           
-        }
-        button{
-            height: 35px
-        }
-        .input-group-text{
-            padding: 0 !important;
-        }
-    </style>
+  <base target="_top">
+  
+  <?!= include('CSS'); ?>
 </head>
+
 <body>
-    <div class=" bg-primary">
-        <nav class="navbar navbar-expand-md bg-primary" data-bs-theme="dark">
-          <div class="container-fluid">
-            <a class="navbar-brand" href="index.html">PIAR</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-              aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarText">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                  <a class="nav-link" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="salud.html">Entorno Salud</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="piar1.html">piar</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="hogar.html">Entorno Hogar</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="educativo.html">Entorno Educativo</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="estudiantes.html">Estudiantes</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="ajuste.html">Ajustes Razonables</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="acuerdo.html">Acta de Acuerdo</a>
-                </li>
-    
-                <li class="nav-item">
-                  <a class="nav-link" href="caracteristicas_estudiante.html">Caracteristicas estudiante</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="planmejoramiento.html">plan </a>
-                </li>
-              </ul>
-              <span class="navbar-text">
-                Inclusion
-              </span>
-            </div>
-          </div>
-        </nav>
-      </div>
+   <div id="nav">
+
+ <nav class="navbar navbar-expand-md navbar-dark bg-dark" data-bs-theme="dark">
+         <div class="container-fluid">
+        <a class="navbar-brand"href="<?=getScriptURL(); ?>?mode=Index">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-links">
+            <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=piar/Piar">Piar</a>
+            </li>
+
+             <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=estudiante/Estudiantes">Estudiante</a>
+            </li>
+
+             <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=profesor/Profesor">Profesor</a>
+            </li>
+
+             <li class="nav-item">
+              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=colegio/Colegio">Colegio</a>
+            </li>
+         
+           </ul>
+        </div>
+        </div>
+      </nav>
+   
     <div class="container">
         <h2 class="text-center mb-4">Piar</h2>
      
@@ -203,7 +152,8 @@
             </div>
         </form>
     </div>
-
+ <?!= include('JavaScript'); ?>
+  <?!= include('estudiante/JSEstudiante'); ?>
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap Icons -->
