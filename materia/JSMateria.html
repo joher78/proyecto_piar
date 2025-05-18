@@ -9,6 +9,7 @@
  list_materias.addEventListener('click', () => {
     console.log('mostrar listado');
    cambioVista1();
+  
   });
 
   nuevo_materia.addEventListener('click', () => {
@@ -18,16 +19,19 @@
   });
 
 function cambioVista(){
-  materias.classList.add('d-none');
-  form_materia.classList.remove('d-none');
-  form_materia.classList.add('d-block');
+  materias.classList.toggle('d-none');
+  form_materia.classList.toggle('d-none');
 }
 
 function cambioVista1(){
-  materias.classList.remove('d-none');
-   materias.classList.add('d-block');
-  form_materia.classList.remove('d-block');
-  form_materia.classList.add('d-none');
+  materias.classList.toggle('d-none');
+   
+ 
+  form_materia.classList.toggle('d-none');
+    const tableBody = document.getElementById('tableBody-materias');
+   tableBody.innerHTML= '';
+    getMaterias();
+  
 }
 
 function validarFormulario (){
@@ -38,11 +42,30 @@ const id = form.idMateria.value;
 if(id === ''){
 console.log('crear', id);
 google.script.run
+ .withSuccessHandler(function (message) {
+      alert(message); // Muestra el mensaje de éxito o error
+  })
+  .withFailureHandler(function (error) {
+        alert("Error: " + error.message); // Muestra el mensaje de error
+      })
  .agregarMateria(form);
+ limpiar(form)
 }else{
 console.log('editar', id);
 google.script.run
+  .withSuccessHandler(function (message) {
+     
+      alert(message); // Muestra el mensaje de éxito o error
+     
+      limpiar(form);
+      cambioVista1();
+
+  })
+  .withFailureHandler(function (error) {
+        alert("Error: " + error.message); // Muestra el mensaje de error
+      })
  .editarMateria(form);
+ 
 }
 console.log('id', id)
  
@@ -74,15 +97,11 @@ window.addEventListener("load", getMaterias);
           const editar = tr.querySelector(".editar")
           const borrar = tr.querySelector(".borrar")
 
-
-
-          
           nombre.textContent = x[1];
           area.textContent = x[2];
           descripcion.textContent = x[3];
           estado.textContent = x[4];
-        
-          
+             
           editar.dataset.materiaId = x[0];
           borrar.dataset.materiaId = x[0];
 
@@ -97,10 +116,13 @@ window.addEventListener("load", getMaterias);
   }
 
 function editarMateria(button){
-
+  
+ cambioVista();
   const tableRow = button.parentNode.parentNode;
  
   const id = button.dataset.materiaId;
+
+   console.log(id)
   const nombre = tableRow.cells[0].innerHTML;
   const area = tableRow.cells[1].innerHTML;
   const descripcion = tableRow.cells[2].innerHTML;
@@ -114,6 +136,9 @@ document.getElementById('estado').value = estado;
 
 }
   
+  function limpiar(form) {
+    form.reset(); // Limpia el formulario
+  }
   
 </script>
 
