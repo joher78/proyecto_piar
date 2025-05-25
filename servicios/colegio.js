@@ -1,7 +1,7 @@
 const hoja2 = institucionSheet;
 
 
-function agregarProfesor(form) {
+function agregarColegio(form) {
   Logger.log(form);
   // {descripcion=otra materia, area=ootra, materia=otra, estado=activo, id=}
   const id = crearNuevoId();
@@ -198,6 +198,6 @@ let form1 = {
 };
 
 function ejecutar (){
-
-colegioPorNombre('sagrado')
+colegioPorId('1')
+//colegioPorNombre('sagrado')
 }
