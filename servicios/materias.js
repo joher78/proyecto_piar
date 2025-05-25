@@ -169,3 +169,7 @@ function buscarFila(id) {
   console.log(row);
   return row;
 }
+
+function prueba1(){
+  crearNuevoId()
+}

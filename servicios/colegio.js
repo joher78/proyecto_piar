@@ -26,7 +26,7 @@ function agregarColegio(form) {
 
 }
 
-function crearNuevoId() {
+function crearNuevoId2() {
   let id = 1;
   if (hoja2.getLastRow() === 1) {
     return id;
@@ -48,7 +48,7 @@ function crearNuevoId() {
 
 function editarColegio(form) {
 
-  const fila = buscarFila(form.id);
+  const fila = buscarFila2(form.id);
   console.log(fila);
   hoja2.getRange(fila, 2, 1, hoja2.getLastColumn() - 1).setValues([[
     form.nombre,
@@ -177,7 +177,7 @@ function colegioPorNombre(nombre) {
   }
 }
 
-function buscarFila(id) {
+function buscarFila2(id) {
   const ids = hoja2.getRange(2, 1, hoja2.getLastRow() - 1, 1).getValues().map(id => id[0]);
   console.log(ids);
   const index = ids.indexOf(Number(id));
@@ -198,6 +198,6 @@ let form1 = {
 };
 
 function ejecutar (){
-colegioPorId('1')
+crearNuevoId2()
 //colegioPorNombre('sagrado')
 }

@@ -27,7 +27,7 @@ function agregarProfesor(form) {
 
 }
 
-function crearNuevoId() {
+function crearNuevoId1() {
   let id = 1;
   if (hoja.getLastRow() === 1) {
     return id;
@@ -189,6 +189,7 @@ function eliminarProfesor(id){
 }
 
 function prueba(){
-  eliminarProfesor('12131415')
+ // eliminarProfesor('12131415')
+ crearNuevoId()
 }
 
