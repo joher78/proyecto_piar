@@ -31,9 +31,6 @@
               <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=profesor/Profesor">Profesor</a>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=colegio/Colegio">Colegio</a>
-            </li>
 
           </ul>
         </div>
@@ -49,17 +46,56 @@
           <button type="button" class="btn-close" id="close"></button>
         </div>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-start">
-          <li class="list-group-item mt-3 "><a class="nav-link text-truncate" id="estudiantes">Estudiantes</a></li>
-          <li class="list-group-item mt-3"><a class="nav-link text-truncate" id="nuevo">Nuevo Estudiante</a></li>
-          <li class="list-group-item mt-3 "><a class="nav-link text-truncate" id="generalInfo">Información General</a>
-          </li>
-          <li class="list-group-item mt-3"><a class="nav-link text-truncate" id="padres">Padres</a></li>
+          <li class="list-group-item mt-3 "><a class="nav-link text-truncate" id="colegios">Colegios</a></li>
+          <li class="list-group-item mt-3"><a class="nav-link text-truncate" id="nuevo-colegio">Nuevo coolegio</a></li>
+         
         </ul>
       </div>
 
       <div id="estudiante-content" class="container bg-light col-9">
 
-        <div class="container form-container p-2">
+
+<div class="card m-2 p-2 " id="lista-colegios">
+         <div class="table-responsive">
+          <h3 class="text-center mb-0">Información Pofesor</h3>
+            <table class="table table-bordered" style="width: 99%;"  id="tabla-colegios">
+              <thead class="table-success">
+                <tr>
+                  <th>Nombre colegio</th>
+                  <th>sede</th>
+                  <th>Direccion</th>
+                  <th>Correo</th>
+                  <th>Telefono</th>
+                  <th>Estado </th>
+                  <th>acciones</th>
+
+                </tr>
+              </thead>
+              <tbody id="tableBody-colegios">
+               
+              </tbody>
+               <template id="rowTemplete">
+                  <tr>
+                    
+                    <td class="template-nombre"> </td>
+                    <td class="template-sede"> </td>
+                    <td class="template-direccion"> </td>
+                    <td class="template-correo"> </td>
+                    <td class="template-telefono"> </td>
+                    <td class="template-estado"> </td>
+                    <td class="template-acciones text-center">
+                      <i class="bi bi-pencil-square editar me-3" role="button" onclick="editarColegio(this)"></i>
+                      <i class="bi bi-trash borrar me-3" role="button" onclick="borrarColegio(this)"></i>
+                    </td>
+                  </tr>
+                </template>
+
+            </table>
+          </div>
+</div>
+
+
+        <div class="container form-container p-2 d-none" id="form-colegio">
           <div class="card m-3">
             <div class="card-header">
               <h3 class="text-center mb-0">Información Colegio</h3>
@@ -73,7 +109,7 @@
                 <div class="row">
                   <div class="mb-3 col-12 col-sm-6 col-md-8">
                     <label for="nombreInstitucion" class="form-label">Nombre de la Institución Educativa</label>
-                    <input type="text" class="form-control" id="nombreInstitucion" name="nombreInstitucion" required>
+                    <input type="text" class="form-control" id="nombreInstitucion" name="nombre" required>
                   </div>
 
                   <div class="mb-3 col-12 col-sm-6 col-md-4">
@@ -91,20 +127,27 @@
                     <input type="email" class="form-control" id="correo" name="correo" required>
                   </div>
 
+                   <div class="mb-3 col-12 col-sm-6 col-md-4">
+                    <label for="telefono" class="form-label">Telefono</label>
+                    <input type="text" class="form-control" id="telefono" name="telefono" required>
+                  </div>
+
                   <div class="mb-3 col-12 col-sm-6 col-md-4">
                     <label for="estado" class="form-label">Estado</label>
                     <select class="form-select" id="estado" name="estado" required>
-                                    <option value="" selected disabled>Seleccionar estado</option>
-                                    <option value="activo">Activo</option>
-                                    <option value="inactivo">Inactivo</option>
-                                    <option value="en_revision">En revisión</option>
+                                    <option value="" disabled selected>Seleccione el estado</option>
+                    <option value="Activo">Activo</option>
+                    <option value="Inactivo">Inactivo</option>
+                    <option value="Pendiente">Pendiente</option>
                                 </select>
                   </div>
 
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button type="reset" class="btn btn-secondary me-md-2">Limpiar</button>
-                    <button type="submit" class="btn btn-primary">Guardar</button>
-                  </div>
+                   </div>
+                  <div style="grid-template-columns: 1fr 1fr;" class="d-grid gap-3">
+                  <button id="btn-guardar" type="button" class="btn btn-primary " onclick="validarFormulario()">Guardar Datos</button>
+                  <button id="btn-editar" type="button" class="btn btn-primary d-none " onclick="editarDatos()">editar Datos</button>
+                  <button type="reset" class="btn btn-secondary ">Limpiar Formulario</button>
+                   </div>
 
                 </div>
               </form>

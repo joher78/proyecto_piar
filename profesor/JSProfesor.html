@@ -1,32 +1,31 @@
 <script>
-  const list_colegios = document.getElementById('colegios');
-  const nuevo_colegio = document.getElementById('nuevo-colegio');
+  const list_profesores = document.getElementById('lista-profesores');
+  const nuevo_profesor = document.getElementById('nuevo-profesor');
 
-  const vista_colegios = document.getElementById('lista-colegios');
-  const form_colegio = document.getElementById('form-colegio');
-  const formInstitucion= document.getElementById('formularioInstitucion');
+  const profesor = document.getElementById('profesores');
+  const form_profesor = document.getElementById('form-profesor');
   const btnguardar = document.getElementById('btn-guardar');
   const btneditar = document.getElementById('btn-editar');
-  const tableBody = document.getElementById('tableBody-colegios');
 
-
- list_colegios.addEventListener('click', () => {
+ list_profesores.addEventListener('click', () => {
   
-  cambioVista1();
+   cambioVista1();
   
   });
 
-  nuevo_colegio.addEventListener('click', () => {
+  nuevo_profesor.addEventListener('click', () => {
    
-    formInstitucion.reset();
+    let frm = document.getElementById('profesorForm');
+   
+    frm.reset();
     cambioVista();
   
   });
 
 function cambioVista(){
-  if (!vista_colegios.classList.contains('d-none')) {
-    vista_colegios.classList.toggle('d-none');
-    form_colegio.classList.toggle('d-none');
+  if (!profesor.classList.contains('d-none')) {
+    profesor.classList.toggle('d-none');
+    form_profesor.classList.toggle('d-none');
   } else {
     console.log("La clase 'd-none' ya existe. No se aplicó toggle."); // Opcional
   }
@@ -43,13 +42,12 @@ console.log("La clase 'd-none' no existe. No se aplicó toggle."); // Opcional
 
 function cambioVista1(){
  
-   if (!form_colegio.classList.contains('d-none')) {
-    vista_colegios.classList.toggle('d-none');
-    form_colegio.classList.toggle('d-none');
-    
-    tableBody.innerHTML= '';
-    getColegios();
-
+   if (!form_profesor.classList.contains('d-none')) {
+    profesor.classList.toggle('d-none');
+    form_profesor.classList.toggle('d-none');
+    const tableBody = document.getElementById('tableBody-profesores');
+   tableBody.innerHTML= '';
+    getProfesores();
     if(!btneditar.classList.contains('d-none')){
         btnguardar.classList.toggle('d-none');
         btneditar.classList.toggle('d-none');
@@ -62,54 +60,58 @@ function cambioVista1(){
   
 }
 
-
 function validarFormulario (){
+ const form = document.getElementById('profesorForm');
 
-
+const id = form.idDocumento.value;
+console.log('crear', id);
 
 google.script.run
  .withSuccessHandler(function (message) {
       alert(message); // Muestra el mensaje de éxito o error
-      limpiar(formInstitucion)
+      limpiar(form)
       cambioVista1()
   })
   .withFailureHandler(function (error) {
         alert("Error: " + error.message); // Muestra el mensaje de error
       })
- .agregarProfesor(formInstitucion);
+ .agregarProfesor(form);
+
 
 }
 
-window.addEventListener("load", getColegios());
-function getColegios(){
+window.addEventListener("load", getProfesores());
 
-  google.script.run
+  function getProfesores() {
+
+    google.script.run
       .withSuccessHandler(est => {
         console.log("muestra datos")
+        let tableBody = document.getElementById('tableBody-profesores');
         var templete = document.getElementById('rowTemplete');
         var temmpleteContent = templete.content;
         console.log(est);
         est.forEach(x => {
           const tr = temmpleteContent.cloneNode(true);
-          const id = tr.querySelector(".template-id");
-          const nombre = tr.querySelector(".template-nombre");
-          const sede = tr.querySelector(".template-sede");
-         
-          const direccion = tr.querySelector(".template-direccion");
+          const id = tr.querySelector(".template-documento");
+          const nombre = tr.querySelector(".template-nombres");
+          const apellidos = tr.querySelector(".template-apellidos");
+          const area = tr.querySelector(".template-area");
+          const cargo = tr.querySelector(".template-cargo");
           const correo = tr.querySelector(".template-correo");
           const telefono = tr.querySelector(".template-telefono")
           const estado = tr.querySelector(".template-estado");
           const editar = tr.querySelector(".editar")
           const borrar = tr.querySelector(".borrar")
 
-          
+          id.textContent = x[0];
           nombre.textContent = x[1];
-          sede.textContent = x[2];
-          direccion.textContent = x[3];
-          
-          correo.textContent = x[4];
-          telefono.textContent = x[5];
-          estado.textContent = x[6];
+          apellidos.textContent = x[2];
+          area.textContent = x[3];
+          cargo.textContent = x[4];
+          correo.textContent = x[5];
+          telefono.textContent = x[6];
+          estado.textContent = x[7];
              
           editar.dataset.materiaId = x[0];
           borrar.dataset.materiaId = x[0];
@@ -121,31 +123,37 @@ function getColegios(){
 
 
       })
-      .leerColegios()
+      .leerProfesores()
+  }
 
-}
+function editarProfesor(button){
+  cambioVista()
 
- function editarColegio(button){
-cambioVista();
   const tableRow = button.parentNode.parentNode;
  
   const id = button.dataset.materiaId;
 
-   console.log(id)
-  const nombre = tableRow.cells[0].innerHTML;
-  const sede = tableRow.cells[1].innerHTML;
-  const direccion = tableRow.cells[2].innerHTML;
-  const correo = tableRow.cells[3].innerHTML;
-  const telefono = tableRow.cells[4].innerHTML;
-  const estado = tableRow.cells[5].innerHTML;
+  console.log(id)
+  const nombre = tableRow.cells[1].innerHTML;
+  const apellidos = tableRow.cells[2].innerHTML;
+  const area = tableRow.cells[3].innerHTML;
+  const cargo = tableRow.cells[4].innerHTML;
+  const correo = tableRow.cells[5].innerHTML;
+  const telefono = tableRow.cells[6].innerHTML;
+  
+  const estado = tableRow.cells[7].innerHTML;
 
-document.getElementById('id').value = id;
-document.getElementById('nombreInstitucion').value = nombre;
-document.getElementById('sede').value = sede;
-document.getElementById('direccion').value = direccion;
+const inId = document.getElementById('idDocumento');
+inId.value = id;
+document.getElementById('nombres').value = nombre;
+document.getElementById('apellidos').value = apellidos;
+document.getElementById('area').value = area;
+document.getElementById('cargo').value = cargo;
 document.getElementById('correo').value = correo;
 document.getElementById('telefono').value = telefono;
 document.getElementById('estado').value = estado;
+inId.setAttribute('readonly', 'readonly')
+
 
  if (!btnguardar.classList.contains('d-none')) {
    btnguardar.classList.toggle('d-none');
@@ -156,43 +164,31 @@ document.getElementById('estado').value = estado;
   }
 
 
- }
 
- function borrarColegio(button)  {
-  const id = button.dataset.materiaId;
-   google.script.run
-  .withSuccessHandler(function (message) {
-     
-      alert(message); // Muestra el mensaje de éxito o error 
-       tableBody.innerHTML= '';
-        getColegios();
-  })
-  .withFailureHandler(function (error) {
-        alert("Error: " + error.message); // Muestra el mensaje de error
-      })
- .eliminarColegio(id);
- }
+}
+  
+  function limpiar(form) {
+    form.reset(); // Limpia el formulario
+  }
 
- function editarDatos(){
+ function borrarProfesor(form){
+    console.log('borrar profesor')
+  }
+
+function editarDatos(){
+  const form = document.getElementById('profesorForm');
   console.log('para editar',form.idDocumento.value);
   google.script.run
   .withSuccessHandler(function (message) {
-      tableBody.innerHTML= '';
      
       alert(message); // Muestra el mensaje de éxito o error 
-       limpiar(form);
+      limpiar(form);
       cambioVista1()
-     
   })
   .withFailureHandler(function (error) {
         alert("Error: " + error.message); // Muestra el mensaje de error
       })
- .editarColegio(form);
-   
+ .editarProfesor(form);
 }
-
- function limpiar(form) {
-    form.reset(); // Limpia el formulario
-  }
   
 </script>

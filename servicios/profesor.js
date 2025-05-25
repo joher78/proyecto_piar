@@ -1,25 +1,29 @@
-const hoja = materiasSheet;
+const hoja1 = educadorSheet;
 
-
-function agregarMateria(form) {
+function agregarProfesor(form) {
   Logger.log(form);
   // {descripcion=otra materia, area=ootra, materia=otra, estado=activo, id=}
-  const id = crearNuevoId();
-  const nombre = form.materia;
-  const area = form.area; //form["segundo-nombre"];
-  const descripcion = form.descripcion; //form["primer-apellido"];
-
+  const id = form.idDocumento;
+  const nombres = form.nombres;
+  const apellidos = form.apellidos; //form["segundo-nombre"];
+  const area = form.area; //form["primer-apellido"];
+  const cargo = form.cargo;
+  const correo= form.correo;
+  const telefono= form.telefono
   const estado = "Activo";
 
-  hoja.appendRow([
+  hoja1.appendRow([
     id,
-    nombre,
+    nombres,
+    apellidos,
     area,
-    descripcion,
+    cargo,
+    correo,
+    telefono,
     estado
 
   ])
-  return "Materia agregada agregado"
+  return "Profesor agregada correctamante"
 
 }
 
@@ -126,10 +130,10 @@ function materiaPorNombre(nombre = "ingles") {
 }
 
 
-function leerMaterias() {
+function leerProfesores() {
 
   try {
-    const data = hoja.getDataRange().getDisplayValues();
+    const data = hoja1.getDataRange().getDisplayValues();
     data.shift();
 
 
@@ -148,24 +152,29 @@ function leerMaterias() {
 
 }
 
-function editarMateria(form) {
-
-  const fila = buscarFila(form.idMateria);
+function editarProfesor(form) {
+console.log("profesor para ed1tar", form.idDocumento);
+  const fila = buscarFila(form.idDocumento);
   console.log(fila);
-  hoja.getRange(fila, 2, 1, hoja.getLastColumn() - 1).setValues([[
-    form.materia,
+   hoja1.getRange(fila, 2, 1, hoja1.getLastColumn() - 1).setValues([[
+    form.nombres,
+    form.apellidos,
     form.area,
-    form.descripcion,
+    form.cargo,
+    form.correo,
+    form.telefono,
     form.estado
   ]])
+ 
   return "Registro Editado"
 }
 
 function buscarFila(id) {
-  const ids = hoja.getRange(2, 1, hoja.getLastRow() - 1, 1).getValues().map(id => id[0]);
+  const ids = hoja1.getRange(2, 1, hoja1.getLastRow() - 1, 1).getValues().map(id => id[0]);
   console.log(ids);
   const index = ids.indexOf(Number(id));
   const row = index + 2;
   console.log(row);
   return row;
 }
+
