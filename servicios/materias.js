@@ -43,7 +43,7 @@ function crearNuevoId() {
 
 }
 
-function materiaPorId(id = 9) {
+function materiaPorId(id) {
 
   try {
     if (!hoja) {
@@ -151,7 +151,7 @@ function leerMaterias() {
 function editarMateria(form) {
 
   const fila = buscarFila(form.idMateria);
-  console.log(fila);
+  console.log("-------> ",fila);
   hoja.getRange(fila, 2, 1, hoja.getLastColumn() - 1).setValues([[
     form.materia,
     form.area,
@@ -170,6 +170,17 @@ function buscarFila(id) {
   return row;
 }
 
+function eliminarMateria(id){
+   console.log("formuilario", id)
+  let formulario = materiaPorId(id);
+  console.log("formuilario", formulario)
+  formulario.estado ='Inactivo'
+  editarMateria(formulario);
+  return 'materia eliminada'
+
+}
+
 function prueba1(){
-  crearNuevoId()
+ // crearNuevoId()
+ eliminarMateria('13')
 }

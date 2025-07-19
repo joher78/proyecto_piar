@@ -5,14 +5,14 @@
   const emailInput = document.getElementById("numero-documento");
   const passwordInput = document.getElementById("grado-aspirante");
   const boton = document.getElementById("btn-guardar");
-  const botonGeneral = document.getElementById("btn-infoGeneral");
+ 
   const botonPadres = document.getElementById("btn-infoPadres");
   const botonLimpiar = document.getElementById("btn-limpiar");
 
 
   // Función para validar los campos de entrada
   function validarCampos() {
-    if (nombreInput.value && emailInput.value && passwordInput.value) {
+    if (nombreInput.value && emailInput.value ) {
       boton.disabled = false; // Habilitar el botón
     } else {
       boton.disabled = true; // Inhabilitar el botón
@@ -22,16 +22,15 @@
   // Agregar listeners de eventos a los campos de entrada
   nombreInput.addEventListener("input", validarCampos);
   emailInput.addEventListener("input", validarCampos);
-  passwordInput.addEventListener("input", validarCampos);
-
+  
   const list_estud = document.getElementById('estudiantes');
   const listado = document.getElementById('listado');
   const nuevo_estud = document.getElementById('nuevo');
   const form_estudiante = document.getElementById('crear');
   const padres = document.getElementById('padres');
   const form_padres = document.getElementById('list-padres');
-  const general = document.getElementById('generalInfo');
-  const form_general = document.getElementById('general');
+ 
+ 
   const viewEstudiante = document.getElementById('ver-estudiante');
 
   list_estud.addEventListener('click', () => {
@@ -42,7 +41,7 @@
       listado.classList.add('d-block');
       form_padres.classList.add('d-none');
       form_estudiante.classList.add('d-none');
-      form_general.classList.add('d-none');
+    
       viewEstudiante.classList.remove('d-block');
       viewEstudiante.classList.add('d-none');
     }
@@ -56,7 +55,7 @@
       form_estudiante.classList.add('d-block');
       listado.classList.add('d-none');
       form_padres.classList.add('d-none');
-      form_general.classList.add('d-none');
+     
        viewEstudiante.classList.remove('d-block');
       viewEstudiante.classList.add('d-none');
 
@@ -67,12 +66,12 @@
       listado.classList.remove('d-none');
       listado.classList.add('d-block');
       form_padres.classList.add('d-none');
-      form_general.classList.add('d-none');
+     
     }
 
   })
 
-  padres.addEventListener('click', verform_padres)
+ 
 
   function verform_padres(){
      console.log('mostrar form padres');
@@ -102,28 +101,7 @@
   }
 
 
-  general.addEventListener('click', () => {
-    console.log('mostrar form est' + form_general);
-    if (form_general.classList.contains('d-none') || !form_general.classList.contains('d-block')) {
-      // Si está oculto o no tiene un estilo definido, muestra el elemento
-      form_general.classList.remove('d-none');
-      form_general.classList.add('d-block');
-      listado.classList.add('d-none');
-      form_estudiante.classList.add('d-none');
-      form_padres.classList.add('d-none');
-       viewEstudiante.classList.remove('d-block');
-      viewEstudiante.classList.add('d-none');
-    } else {
-      // Si está visible, oculta el elemento
-      form_general.classList.remove('d-block');
-      form_general.classList.add('d-none');
-      form_estudiante.classList.add('d-none');
-      form_padres.classList.add('d-none');
-      listado.classList.remove('d-none');
-      listado.classList.add('d-block');
-    }
-
-  })
+ 
 
   let id = "";
   let documentNumber = "";
@@ -268,22 +246,22 @@
           const primmerApellido = tr.querySelector(".template-primerApellido")
           const segundoApellido = tr.querySelector(".template-segundoApellido")
           const edad = tr.querySelector(".template-edad")
-          const grado = tr.querySelector(".template-grado")
-          const salon = tr.querySelector(".template-salon")
+         
+          const ver1 = tr.querySelector(".ver1")
           const ver = tr.querySelector(".ver")
           const editar = tr.querySelector(".editar")
           const borrar = tr.querySelector(".borrar")
 
 
 
-          documento.textContent = x[8];
+          documento.textContent = x[0];
           primerNombre.textContent = x[1];
           segundoNombre.textContent = x[2];
           primmerApellido.textContent = x[3];
           segundoApellido.textContent = x[4];
           edad.textContent = calcularEdad(x[6]);
-          grado.textContent = x[15];
-          salon.textContent = x[16];
+       
+          ver1.dataset.id = x[0];
           ver.dataset.id = x[0];
           editar.dataset.id = x[0];
           borrar.dataset.id = x[0];
@@ -492,52 +470,6 @@
 
         }
 
-        if (propiedad == "informacionGeneral") {
-
-          console.log("propieda " + propiedad);
-
-          console.log("tama general " + Object.keys(estudiante[propiedad]).length)
-          
-          const datosDiv = document.getElementById('datosgeneral');
-          datosDiv.innerHTML = ''; // Limpiar contenido anterior
-          const row = document.createElement('div');
-          let colLabel = document.createElement('div');
-          let colValue = document.createElement('div');
-
-          if (Object.keys(estudiante[propiedad]).length > 10) {
-            colLabel.classList.add('col-12');
-            colLabel.innerHTML = `<h6>No hay informacion general del estudiente</h6>`;
-          } else {
-
-            console.log("ingresa en el else ");
- for (const estuian in estudiante[propiedad]) {
-              console.log(estuian);
-            const row = document.createElement('div');
-            row.classList.add('row');
-
-            const colLabel = document.createElement('div');
-            colLabel.classList.add('col-6');
-            colLabel.innerHTML = `<h6>${estuian}</h6>`;
-
-            const colValue = document.createElement('div');
-            colValue.classList.add('col-6');
-            let valor = estudiante[propiedad][estuian];
-
-            colValue.innerHTML = `<span>${valor}</span>`;
-            row.appendChild(colLabel);
-            row.appendChild(colValue);
-            datosDiv.appendChild(row);
-           
-
-          }
-
-          }
-
-          row.appendChild(colLabel);
-          row.appendChild(colValue);
-          datosDiv.appendChild(row);
-
-        }
 
       }
     }

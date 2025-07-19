@@ -5,6 +5,11 @@
 
   const materias = document.getElementById('materias');
   const form_materia = document.getElementById('form-materia');
+  const form = document.getElementById('materiaForm');
+   const tableBody = document.getElementById('tableBody-materias');
+
+    const btnguardar = document.getElementById('btn-guardar');
+  const btneditar = document.getElementById('btn-editar')
 
  list_materias.addEventListener('click', () => {
     console.log('mostrar listado');
@@ -14,28 +19,51 @@
 
   nuevo_materia.addEventListener('click', () => {
     console.log('nueva materia' );
+    form.reset();
     cambioVista();
   
   });
 
 function cambioVista(){
+  if (!materias.classList.contains('d-none')) {
   materias.classList.toggle('d-none');
   form_materia.classList.toggle('d-none');
+   } else {
+    console.log("La clase 'd-none' ya existe. No se aplicó toggle."); // Opcional
+  }
+  if (!btnguardar.classList.contains('d-none')) {
+   console.log("La clase 'd-none' no existe. No se aplicó toggle."); // Opcional
+ }else{
+
+    btnguardar.classList.toggle('d-none');
+    btneditar.classList.toggle('d-none');
+ }
 }
 
 function cambioVista1(){
+
+   if (!form_materia.classList.contains('d-none')) {
   materias.classList.toggle('d-none');
    
  
   form_materia.classList.toggle('d-none');
-    const tableBody = document.getElementById('tableBody-materias');
+   
    tableBody.innerHTML= '';
     getMaterias();
+
+     if(!btneditar.classList.contains('d-none')){
+        btnguardar.classList.toggle('d-none');
+        btneditar.classList.toggle('d-none');
+    }
+
+     } else {
+    console.log("La clase 'd-none' ya existe. No se aplicó toggle."); // Opcional
+  }
   
 }
 
 function validarFormulario (){
- const form = document.getElementById('materiaForm');
+
 
 const id = form.idMateria.value;
 
@@ -123,18 +151,63 @@ function editarMateria(button){
   const id = button.dataset.materiaId;
 
    console.log(id)
-  const nombre = tableRow.cells[0].innerHTML;
-  const area = tableRow.cells[1].innerHTML;
-  const descripcion = tableRow.cells[2].innerHTML;
-  const estado = tableRow.cells[3].innerHTML;
+  const nombre = tableRow?.cells?.[0]?.innerHTML || "";
+  const area = tableRow?.cells?.[1]?.innerHTML || "";
+  const descripcion = tableRow?.cells?.[2]?.innerHTML || "";
+  const estado = tableRow?.cells?.[3]?.innerHTML || "";
 
 document.getElementById('idMateria').value = id;
 document.getElementById('materia').value = nombre;
 document.getElementById('area').value = area;
 document.getElementById('descripcion').value = descripcion;
 document.getElementById('estado').value = estado;
-
+ 
+  if (!btnguardar.classList.contains('d-none')) {
+   btnguardar.classList.toggle('d-none');
+   btneditar.classList.toggle('d-none');
+    console.log("La clase 'd-none' se ha toggled."); // Opcional: para depuración
+  } else {
+    console.log("La clase 'd-none' ya existe. No se aplicó toggle."); // Opcional
+  }
 }
+
+function borrarMateria(button){
+  const id = button.dataset.materiaId;
+  console.log("ID", id);
+   google.script.run
+  .withSuccessHandler(function (message) {
+     
+      alert(message); // Muestra el mensaje de éxito o error 
+     tableBody.innerHTML= '';
+    getMaterias();
+  })
+  .withFailureHandler(function (error) {
+        alert("Error: " + error.message); // Muestra el mensaje de error
+      })
+ .eliminarMateria(id);
+ 
+}
+
+function editarDatos(){
+  console.log('para editar',form);
+  google.script.run
+  .withSuccessHandler(function (message) {
+     
+     
+      alert(message); // Muestra el mensaje de éxito o error 
+      
+       limpiar(form);
+      cambioVista1()
+       tableBody.innerHTML= '';
+     
+  })
+  .withFailureHandler(function (error) {
+        alert("Error: " + error.message); // Muestra el mensaje de error
+      })
+ .editarMateria(form);
+   
+}
+
   
   function limpiar(form) {
     form.reset(); // Limpia el formulario

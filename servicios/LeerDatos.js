@@ -70,9 +70,7 @@ function estudianteId(id){
     // Obtener datos del estudiante
     var estudianteData = obtenerDatosPorId(sheetEstudiante, id);
 
-    // Obtener datos de información general
-      console.log ("=======>  ingormacion general");
-    var infoGeneralData = obtenerDatosPorId(infoGeneralSheet, id);
+   
 
     // Obtener datos de los padres (asumiendo que hay múltiples padres)
     var padresData = [];
@@ -92,7 +90,6 @@ function estudianteId(id){
     // Crear el objeto JSON combinado
     var jsonData = {
       "estudiante": estudianteData,
-      "informacionGeneral": infoGeneralData,
       "padres": padresData
     };
     console.log(JSON.stringify(jsonData))
