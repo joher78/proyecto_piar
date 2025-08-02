@@ -99,9 +99,9 @@
             </div>
             <div class="card-body">
               <form id="materiaForm" name="materiaForm">
-                <div class="mb-3" hidden>
+                <div class="mb-3">
                   <label for="idMateria" class="form-label">ID:</label>
-                  <input type="text" class="form-control" id="idMateria" name="idMateria" placeholder="Ingrese el ID" required>
+                  <input type="text" class="form-control" id="idMateria" name="idMateria" placeholder="Ingrese el ID">
 
                 </div>
 
@@ -133,8 +133,8 @@
 
                   </div>
                   <div style="grid-template-columns: 1fr 1fr;" class="d-grid gap-3">
-                  <button type="button" class="btn btn-primary " onclick="validarFormulario()">Guardar Datos</button>
-                 
+                  <button id="btn-guardar" type="button" class="btn btn-primary " onclick="validarFormulario()">Guardar Datos</button>
+                  <button id="btn-editar" type="button" class="btn btn-primary d-none " onclick="editarDatos()">editar Datos</button>
                   <button type="reset" class="btn btn-secondary ">Limpiar Formulario</button>
                    </div>
                 </div>

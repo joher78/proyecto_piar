@@ -23,11 +23,11 @@ function agregarProfesor(form) {
     estado
 
   ])
-  return "Profesor agregada correctamante"
+  return "Profesor agregado correctamante"
 
 }
 
-function crearNuevoId() {
+function crearNuevoId1() {
   let id = 1;
   if (hoja.getLastRow() === 1) {
     return id;
@@ -47,26 +47,26 @@ function crearNuevoId() {
 
 }
 
-function materiaPorId(id = 9) {
+function profesorPorId(id) {
 
   try {
-    if (!hoja) {
+    if (!hoja1) {
       Logger.log("Hoja no encontrada.");
       return JSON.stringify({ error: "Hoja  no encontrada." });
     }
     console.log("id " + id)
 
-    var idColumn = hoja.getRange("A:A"); // Asumiendo que el ID está en la columna A
+    var idColumn = hoja1.getRange("A:A"); // Asumiendo que el ID está en la columna A
     console.log("idColumn " + idColumn)
     var idCell = idColumn.createTextFinder(id).findNext();
 
     if (idCell) {
       console.log("idCell " + idCell.getRow())
       var row = idCell.getRow();
-      var range = hoja.getRange(row, 1, 1, hoja.getLastColumn());
+      var range = hoja1.getRange(row, 1, 1, hoja1.getLastColumn());
       var values = range.getValues()[0];
       console.log("values " + values)
-      var headers = hoja.getRange(1, 1, 1, hoja.getLastColumn()).getValues()[0];
+      var headers = hoja1.getRange(1, 1, 1, hoja1.getLastColumn()).getValues()[0];
 
       var data = {};
       headers.forEach(function (header, j) {
@@ -88,7 +88,7 @@ function materiaPorId(id = 9) {
   }
 }
 
-function materiaPorNombre(nombre = "ingles") {
+function profesorPorNombre(nombre = "ingles") {
 
   try {
     if (!hoja) {
@@ -154,7 +154,7 @@ function leerProfesores() {
 
 function editarProfesor(form) {
 console.log("profesor para ed1tar", form.idDocumento);
-  const fila = buscarFila(form.idDocumento);
+  const fila = buscarFila1(form.idDocumento);
   console.log(fila);
    hoja1.getRange(fila, 2, 1, hoja1.getLastColumn() - 1).setValues([[
     form.nombres,
@@ -169,12 +169,27 @@ console.log("profesor para ed1tar", form.idDocumento);
   return "Registro Editado"
 }
 
-function buscarFila(id) {
+function buscarFila1(id) {
+ console.log('id',id) 
   const ids = hoja1.getRange(2, 1, hoja1.getLastRow() - 1, 1).getValues().map(id => id[0]);
   console.log(ids);
   const index = ids.indexOf(Number(id));
   const row = index + 2;
   console.log(row);
   return row;
+}
+
+function eliminarProfesor(id){
+  let formulario = profesorPorId(id);
+  console.log("formuilario", formulario)
+  formulario.estado='Inactivo'
+  editarProfesor(formulario);
+  return 'profesor eliminado'
+
+}
+
+function prueba(){
+ // eliminarProfesor('12131415')
+ crearNuevoId()
 }
 

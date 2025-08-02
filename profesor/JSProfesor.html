@@ -16,9 +16,11 @@
   nuevo_profesor.addEventListener('click', () => {
    
     let frm = document.getElementById('profesorForm');
+    const inId = document.getElementById('idDocumento');
    
     frm.reset();
     cambioVista();
+    inId.removeAttribute('readonly');
   
   });
 
@@ -61,6 +63,7 @@ function cambioVista1(){
 }
 
 function validarFormulario (){
+  console.log("agregar profesor")
  const form = document.getElementById('profesorForm');
 
 const id = form.idDocumento.value;
@@ -113,8 +116,8 @@ window.addEventListener("load", getProfesores());
           telefono.textContent = x[6];
           estado.textContent = x[7];
              
-          editar.dataset.materiaId = x[0];
-          borrar.dataset.materiaId = x[0];
+          editar.dataset.profesorId = x[0];
+          borrar.dataset.profesorId = x[0];
 
           tableBody.appendChild(tr);
 
@@ -131,7 +134,7 @@ function editarProfesor(button){
 
   const tableRow = button.parentNode.parentNode;
  
-  const id = button.dataset.materiaId;
+  const id = button.dataset.profesorId;
 
   console.log(id)
   const nombre = tableRow.cells[1].innerHTML;
@@ -171,8 +174,21 @@ inId.setAttribute('readonly', 'readonly')
     form.reset(); // Limpia el formulario
   }
 
- function borrarProfesor(form){
-    console.log('borrar profesor')
+ function borrarProfesor(button){
+  const id = button.dataset.profesorId;
+    console.log('borrar profesor ', id)
+     google.script.run
+  .withSuccessHandler(function (message) {
+     
+      alert(message); // Muestra el mensaje de éxito o error 
+       const tableBody = document.getElementById('tableBody-profesores');
+   tableBody.innerHTML= '';
+      getProfesores()
+  })
+  .withFailureHandler(function (error) {
+        alert("Error: " + error.message); // Muestra el mensaje de error
+      })
+ .eliminarProfesor(id);
   }
 
 function editarDatos(){
