@@ -2,47 +2,54 @@
 <html>
 
 <head>
-  <base target="_top">
-  
-  <?!= include('CSS'); ?>
+    <base target="_top">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <?!= include('CSS'); ?>
 </head>
 
 <body>
-   <div id="nav">
+    <div id="nav">
 
- <nav class="navbar navbar-expand-md navbar-dark bg-dark" data-bs-theme="dark">
-         <div class="container-fluid">
-        <a class="navbar-brand"href="<?=getScriptURL(); ?>?mode=Index">Home</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark" data-bs-theme="dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="<?=getScriptURL(); ?>?mode=Index">Home</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-links">
-            <li class="nav-item">
-              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=piar/Piar">Piar</a>
-            </li>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-links">
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=piar/Piar">Piar</a>
+                        </li>
 
-             <li class="nav-item">
-              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=estudiante/Estudiantes">Estudiante</a>
-            </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="../estudiante/estudiantes.html">Estudiante</a>
+                        </li>
 
-             <li class="nav-item">
-              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=profesor/Profesor">Profesor</a>
-            </li>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="../profesor/Profesor.html">Profesor</a>
+                        </li>
 
-             <li class="nav-item">
-              <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=colegio/Colegio">Colegio</a>
-            </li>
-         
-           </ul>
-        </div>
-        </div>
-      </nav>
+                        <li class="nav-item">
+                            <a class="nav-item nav-link" href="<?=getScriptURL(); ?>?mode=colegio/Colegio">Colegio</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
     <div class="container">
         <h2 class="text-center mb-4">Piar</h2>
-     
+
         <form id="piar">
             <!-- Datos de identificación -->
             <div class="card">
@@ -51,51 +58,68 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-<div></div>
-                       
-                       
+                        <div></div>
+
+
                         <div class="col-md-8 mb-3">
                             <label for="id_estudiante" class="form-label">Estudiante:</label>
-                            
+
                             <div class="input-group">
-                                <span class="input-group-text" id="basic-addon1"><button class=" btn btn-primary m-0" type="submit"><i class="bi bi-search"></i></button></span>
-                                <input type="text" class="form-control" id="id_estudiante" name="id_estudiante" required>
-                              </div>
+                                <span class="input-group-text" id="basic-addon1"><button class=" btn btn-primary m-0"
+                                        type="button" onclick="buscarEstudiante()"><i
+                                            class="bi bi-search"></i></button></span>
+                                <input type="text" class="form-control" id="id_estudiante" name="id_estudiante"
+                                    required>
+                            </div>
                         </div>
                         <div class="col-4 mb-3">
                             <label for="edadEstudiante" class="form-label">Edad del Estudiante:</label>
-                            <input type="number" class="form-control" id="edadEstudiante" name="edadEstudiante" min="1" max="100">
+                            <input type="number" class="form-control" id="edadEstudiante" name="edadEstudiante" min="1"
+                                max="100">
                         </div>
-                      
-    
+
+
                     </div>
                 </div>
             </div>
+            <div class="card">
+                <div id="contenedor-tabla">
 
-
-           <div class="card">
-                <div class="card-header">
-                    Datos de Estudiante
                 </div>
+
+            </div>
+
+
+            <div class="card">
+
                 <div class="card-body">
                     <div class="row">
 
-                       
-                       
+
+
                         <div class="col-12 mb-3">
                             <label for="responsable" class="form-label">Responsable:</label>
-                            
+
                             <div class="input-group mb-3">
-                                <span class="input-group-text" id="basic-addon1"><button class=" btn btn-primary" type="submit"><i class="bi bi-search"></i></button></span>
+                                <span class="input-group-text" id="basic-addon1">
+                                    <button class=" btn btn-primary" type="button" onclick="buscarResponsable()"><i
+                                            class="bi bi-search"></i></button>
+                                </span>
                                 <input type="text" class="form-control" id="responsable" name="responsable" required>
-                              </div>
+                            </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
+            <div class="card">
+                <div id="contenedor-tabla-responsable">
 
-            
+                </div>
+
+            </div>
+
+
 
             <!-- Información Escolar -->
             <div class="card">
@@ -145,24 +169,444 @@
                 <button type="reset" class="btn btn-secondary me-md-2">
                     <i class="bi bi-eraser"></i> Limpiar
                 </button>
-                <button type="submit" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" onclick="guardarPiar()">
                     <i class="bi bi-save"></i> Guardar
                 </button>
             </div>
         </form>
     </div>
- <?!= include('JavaScript'); ?>
-  <?!= include('estudiante/JSEstudiante'); ?>
+    <?!= include('JavaScript'); ?>
+    <?!= include('estudiante/JSEstudiante'); ?>
     <!-- Bootstrap JS Bundle with Popper -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <!-- Bootstrap Icons -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css"
+        rel="stylesheet">
     <script>
-        document.getElementById('formEstudiante').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Formulario enviado correctamente');
-            // Aquí puedes agregar el código para procesar el formulario
-        });
+         const piarFull = [];
+        let id_estudiante = null;
+        let id_responsable1 = null;
+        const estudiantes = [
+            {
+                primerNombre: "Ana",
+                segundoNombre: "María",
+                primerApellido: "Soto",
+                segundoApellido: "González",
+                lugarNacimiento: "Bogotá",
+                fechaNacimiento: "2002-05-15",
+                tipoDocumento: "CC",
+                numeroDocumento: "1023456789",
+                correo: "ana.soto@ejemplo.com",
+                telefono: "3001112233"
+            },
+            {
+                primerNombre: "Pedro",
+                segundoNombre: "Luis",
+                primerApellido: "Giraldo",
+                segundoApellido: "Pérez",
+                lugarNacimiento: "Medellín",
+                fechaNacimiento: "2003-08-20",
+                tipoDocumento: "TI",
+                numeroDocumento: "1024567890",
+                correo: "pedro.giraldo@ejemplo.com",
+                telefono: "3102223344"
+            },
+            {
+                primerNombre: "Sofía",
+                segundoNombre: "Elena",
+                primerApellido: "Castro",
+                segundoApellido: "López",
+                lugarNacimiento: "Cali",
+                fechaNacimiento: "2001-11-05",
+                tipoDocumento: "CC",
+                numeroDocumento: "1025678901",
+                correo: "sofia.castro@ejemplo.com",
+                telefono: "3203334455"
+            },
+            {
+                primerNombre: "Carlos",
+                segundoNombre: "Andrés",
+                primerApellido: "Vélez",
+                segundoApellido: "Ramírez",
+                lugarNacimiento: "Barranquilla",
+                fechaNacimiento: "2000-03-10",
+                tipoDocumento: "CC",
+                numeroDocumento: "1026789012",
+                correo: "carlos.velez@ejemplo.com",
+                telefono: "3154445566"
+            },
+            {
+                primerNombre: "Laura",
+                segundoNombre: "Sofía",
+                primerApellido: "Restrepo",
+                segundoApellido: "Marín",
+                lugarNacimiento: "Pereira",
+                fechaNacimiento: "2002-09-25",
+                tipoDocumento: "TI",
+                numeroDocumento: "1027890123",
+                correo: "laura.restrepo@ejemplo.com",
+                telefono: "3015556677"
+            },
+            {
+                primerNombre: "Daniel",
+                segundoNombre: "Felipe",
+                primerApellido: "Gómez",
+                segundoApellido: "Vargas",
+                lugarNacimiento: "Bucaramanga",
+                fechaNacimiento: "1999-07-01",
+                tipoDocumento: "CC",
+                numeroDocumento: "1028901234",
+                correo: "daniel.gomez@ejemplo.com",
+                telefono: "3126667788"
+            },
+            {
+                primerNombre: "Valentina",
+                segundoNombre: "",
+                primerApellido: "Montoya",
+                segundoApellido: "Muñoz",
+                lugarNacimiento: "Cartagena",
+                fechaNacimiento: "2003-04-18",
+                tipoDocumento: "TI",
+                numeroDocumento: "1029012345",
+                correo: "valentina.montoya@ejemplo.com",
+                telefono: "3057778899"
+            },
+            {
+                primerNombre: "Jorge",
+                segundoNombre: "Iván",
+                primerApellido: "Hernández",
+                segundoApellido: "Cruz",
+                lugarNacimiento: "Manizales",
+                fechaNacimiento: "2000-12-30",
+                tipoDocumento: "CC",
+                numeroDocumento: "1030123456",
+                correo: "jorge.hernandez@ejemplo.com",
+                telefono: "3188889900"
+            },
+            {
+                primerNombre: "Isabella",
+                segundoNombre: "",
+                primerApellido: "Marín",
+                segundoApellido: "Gómez",
+                lugarNacimiento: "Santa Marta",
+                fechaNacimiento: "2002-06-08",
+                tipoDocumento: "CC",
+                numeroDocumento: "1031234567",
+                correo: "isabella.marin@ejemplo.com",
+                telefono: "3009990011"
+            },
+            {
+                primerNombre: "Mateo",
+                segundoNombre: "José",
+                primerApellido: "Palacio",
+                segundoApellido: "García",
+                lugarNacimiento: "Villavicencio",
+                fechaNacimiento: "1978-04-03",
+                tipoDocumento: "TI",
+                numeroDocumento: "1032345678",
+                correo: "mateo.palacio@ejemplo.com",
+                telefono: "3140001122"
+            }
+        ];
+
+        const responsables = [
+
+            {
+                documento: "12345678",
+                nombres: "Juan Carlos",
+                apellidos: "García López",
+                areaEspecializacion: "Desarrollo Web",
+                cargo: "Desarrollador Senior",
+                correo: "juan.garcia@empresa.com",
+                telefono: "3001234567",
+                estado: "Activo"
+            },
+            {
+                documento: "23456789",
+                nombres: "María Elena",
+                apellidos: "Rodríguez Pérez",
+                areaEspecializacion: "Base de Datos",
+                cargo: "Administrador de BD",
+                correo: "maria.rodriguez@empresa.com",
+                telefono: "3002345678",
+                estado: "Activo"
+            },
+            {
+                documento: "34567890",
+                nombres: "Carlos Alberto",
+                apellidos: "Martínez Sánchez",
+                areaEspecializacion: "Ciberseguridad",
+                cargo: "Analista de Seguridad",
+                correo: "carlos.martinez@empresa.com",
+                telefono: "3003456789",
+                estado: "Inactivo"
+            },
+            {
+                documento: "45678901",
+                nombres: "Ana Sofía",
+                apellidos: "López Herrera",
+                areaEspecializacion: "UX/UI Design",
+                cargo: "Diseñadora UX",
+                correo: "ana.lopez@empresa.com",
+                telefono: "3004567890",
+                estado: "Activo"
+            },
+            {
+                documento: "56789012",
+                nombres: "Luis Fernando",
+                apellidos: "Ramírez Torres",
+                areaEspecializacion: "DevOps",
+                cargo: "Ingeniero DevOps",
+                correo: "luis.ramirez@empresa.com",
+                telefono: "3005678901",
+                estado: "Activo"
+            },
+            {
+                documento: "67890123",
+                nombres: "Diana Patricia",
+                apellidos: "Morales Castro",
+                areaEspecializacion: "Análisis de Datos",
+                cargo: "Data Scientist",
+                correo: "diana.morales@empresa.com",
+                telefono: "3006789012",
+                estado: "En Vacaciones"
+            },
+            {
+                documento: "78901234",
+                nombres: "Roberto José",
+                apellidos: "Vargas Mendoza",
+                areaEspecializacion: "Redes",
+                cargo: "Administrador de Redes",
+                correo: "roberto.vargas@empresa.com",
+                telefono: "3007890123",
+                estado: "Activo"
+            },
+            {
+                documento: "89012345",
+                nombres: "Laura Cristina",
+                apellidos: "Jiménez Ruiz",
+                areaEspecializacion: "Testing",
+                cargo: "QA Tester",
+                correo: "laura.jimenez@empresa.com",
+                telefono: "3008901234",
+                estado: "Licencia Médica"
+            },
+            {
+                documento: "90123456",
+                nombres: "Andrés Felipe",
+                apellidos: "Guerrero Silva",
+                areaEspecializacion: "Machine Learning",
+                cargo: "Ingeniero ML",
+                correo: "andres.guerrero@empresa.com",
+                telefono: "3009012345",
+                estado: "Activo"
+            },
+            {
+                documento: "01234567",
+                nombres: "Natalia Andrea",
+                apellidos: "Córdoba Valencia",
+                areaEspecializacion: "Gestión de Proyectos",
+                cargo: "Project Manager",
+                correo: "natalia.cordoba@empresa.com",
+                telefono: "3000123456",
+                estado: "Inactivo"
+            }
+        ];
+
+        const input = document.getElementById('id_estudiante');
+        const inputResponsable = document.getElementById('responsable');
+      
+
+        function buscarEstudiante() {
+            const id = input.value;
+            const estudiante = estudiantes.find(estudiante => estudiante.numeroDocumento === id);
+            const contenedorTabla = document.getElementById("contenedor-tabla");
+            contenedorTabla.innerHTML = ""; // Esta debería funcionar
+            // Crear el elemento <table>
+            const tabla = document.createElement("table");
+            // tabla.className = "table table-striped table-bordered";
+            tabla.classList.add("table", "table-striped", "table-bordered");
+            // Crear thead y la fila de encabezado
+            const thead = document.createElement("thead");
+            const filaEncabezado = document.createElement("tr");
+
+            // Títulos de las columnas
+            const encabezados = [
+                "Nombres",
+                "Apellidos",
+                "Documento",
+                "Correo",
+                "Teléfono"
+            ];
+            encabezados.forEach(texto => {
+                const th = document.createElement("th");
+                th.textContent = texto;
+                filaEncabezado.appendChild(th);
+            });
+
+            // Agregar la fila de encabezado al thead
+            thead.appendChild(filaEncabezado);
+            // Agregar el thead a la tabla
+            tabla.appendChild(thead);
+
+            // Crear tbody para los datos del estudiante
+            const tbody = document.createElement("tbody");
+            const filaEstudiante = document.createElement("tr");
+            id_estudiante = estudiante.numeroDocumento;
+            const nombresCompletos = `${estudiante.primerNombre} ${estudiante.segundoNombre || ''}`.trim();
+            const apellidosCompletos = `${estudiante.primerApellido} ${estudiante.segundoApellido || ''}`.trim();
+            const documentoCompleto = `${estudiante.tipoDocumento} ${estudiante.numeroDocumento}`;
+
+            const datosEstudiante = [
+                nombresCompletos || "N/A",
+                apellidosCompletos || "N/A",
+                documentoCompleto || "N/A",
+                estudiante.correo || "N/A",
+                estudiante.telefono || "N/A"
+            ];
+
+            // Crear celdas con los datos
+            datosEstudiante.forEach(dato => {
+                const td = document.createElement("td");
+                td.textContent = dato;
+                filaEstudiante.appendChild(td);
+            });
+
+            tbody.appendChild(filaEstudiante);
+            tabla.appendChild(tbody);
+            contenedorTabla.appendChild(tabla);
+
+            // Agregar la tabla al contenedor
+            contenedorTabla.appendChild(tabla);
+
+            const fechaNacimiento = new Date(estudiante.fechaNacimiento);
+            const edad = calcularEdad(fechaNacimiento);
+            document.getElementById("edadEstudiante").value = edad;
+            input.value = "";
+        };
+
+        // Función para calcular la edad a partir de la fecha de nacimiento
+        function calcularEdad(fechaNacimiento) {
+            // Crear objeto Date con la fecha de nacimiento
+            const fechaNac = new Date(fechaNacimiento);
+            const fechaActual = new Date();
+
+            // Calcular la diferencia en años
+            let edad = fechaActual.getFullYear() - fechaNac.getFullYear();
+
+            // Verificar si ya cumplió años este año
+            const mesActual = fechaActual.getMonth();
+            const diaActual = fechaActual.getDate();
+            const mesNacimiento = fechaNac.getMonth();
+            const diaNacimiento = fechaNac.getDate();
+
+            // Si aún no ha llegado su cumpleaños este año, restar 1
+            if (mesActual < mesNacimiento ||
+                (mesActual === mesNacimiento && diaActual < diaNacimiento)) {
+                edad--;
+            }
+
+            return edad;
+
+        }
+
+        function buscarResponsable() {
+            const id_responsable = inputResponsable.value;
+            const responsable = responsables.find(res => res.documento === id_responsable);
+           
+            const contenedorTabla = document.getElementById("contenedor-tabla-responsable");
+            contenedorTabla.innerHTML = ""; // Esta debería funcionar
+
+              // Crear el elemento <table>
+            const tabla = document.createElement("table");
+            // tabla.className = "table table-striped table-bordered";
+            tabla.classList.add("table", "table-striped", "table-bordered");
+            // Crear thead y la fila de encabezado
+            const thead = document.createElement("thead");
+            const filaEncabezado = document.createElement("tr");
+
+            // Títulos de las columnas
+            const encabezados = [
+                "Nombres",
+                "Apellidos",
+                "Documento",
+                "Area de especializacion",
+                "Cargo",
+                "Correo",
+                "Teléfono"
+            ];
+            encabezados.forEach(texto => {
+                const th = document.createElement("th");
+                th.textContent = texto;
+                filaEncabezado.appendChild(th);
+            });
+
+            // Agregar la fila de encabezado al thead
+            thead.appendChild(filaEncabezado);
+            // Agregar el thead a la tabla
+            tabla.appendChild(thead);
+            
+
+             // Crear tbody para los datos del estudiante
+            const tbody = document.createElement("tbody");
+            const filaResponsable = document.createElement("tr");
+            id_responsable1 = responsable.documento;
+            
+
+
+            const responsableCompleto    = [
+               responsable.nombres || "N/A",
+               responsable.apellidos || "N/A",
+               responsable.documento || "N/A",
+               responsable.areaEspecializacion || "N/A",
+               responsable.cargo || "N/A",
+               responsable.correo || "N/A",
+               responsable.telefono || "N/A"
+            ];
+
+            // Crear celdas con los datos
+            responsableCompleto.forEach(dato => {
+                const td = document.createElement("td");
+                td.textContent = dato;
+                filaResponsable.appendChild(td);
+            });
+
+            tbody.appendChild(filaResponsable);
+            tabla.appendChild(tbody);
+
+             // Agregar la tabla al contenedor
+            contenedorTabla.appendChild(tabla);
+
+            inputResponsable.value = "";
+        }
+
+        function guardarPiar() {
+           const fechaCreacion = document.getElementById("fechaCreacion").value;
+           const institucion = document.getElementById("institucion").value;
+           const anioLectivo = document.getElementById("añoLectivo").value;
+           const grado = document.getElementById("grado").value;
+           const salon = document.getElementById("salon").value;
+           const jornada = document.getElementById("jornada").value;
+          
+          
+            const piar = {
+                id_estudiante: id_estudiante,
+                grado: grado,
+                salon: salon,
+                jornada: jornada,
+                fechaCreacion: fechaCreacion,
+                institucion: institucion,
+                anioLectivo: anioLectivo,
+                responsable: id_responsable1
+            };
+            piarFull.push(piar);
+           
+
+            alert("PIAR Guardado  " + JSON.stringify(piarFull)+" "+ piarFull.length);
+        }
+
+
     </script>
 </body>
+
 </html>
