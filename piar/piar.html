@@ -166,7 +166,7 @@
 
             <!-- Botones de acción -->
             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
-                <button type="reset" class="btn btn-secondary me-md-2">
+                <button type="button" class="btn btn-secondary me-md-2" onclick="limpiarPiar()">
                     <i class="bi bi-eraser"></i> Limpiar
                 </button>
                 <button type="button" class="btn btn-primary" onclick="guardarPiar()">
@@ -605,6 +605,12 @@
             alert("PIAR Guardado  " + JSON.stringify(piarFull)+" "+ piarFull.length);
         }
 
+        function limpiarPiar() {
+            input.value = "";
+            inputResponsable.value = "";
+            document.getElementById("contenedor-tabla").innerHTML = ""; // Limpiar la tabla
+            document.getElementById("contenedor-tabla-responsable").innerHTML = ""; // Limpiar la tabla
+        }      
 
     </script>
 </body>
